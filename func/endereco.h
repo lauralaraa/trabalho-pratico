@@ -9,7 +9,7 @@ typedef struct Endereco {
     char cep[20];
 }Endereco;
 
-Endereco cadastro_endereco(i) {
+Endereco cadastro_endereco(int i) {
 
      int i,flag;
     while(flag){

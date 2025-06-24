@@ -12,8 +12,8 @@ typedef struct Vendedor {
 int main() {
 
     int i,vendascom,flag;
+    Vendedor vendedor[100000];
     while(flag){
-    Vendedor vendedor[i];
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor[i].nome,100,stdin);
     printf("\nInsira o numero do vendedor\n");
