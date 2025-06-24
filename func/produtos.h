@@ -9,3 +9,15 @@ typedef struct Produto {
     float preço;
 }Produto;
 
+Produto produto(int i) {
+    Produto produto[i];
+    printf("\nInsira o nome do produto\n");
+    fgets(produto[i].nome,100,stdin);
+    printf("\nInsira o codigo do produto\n");
+    fgets(produto[i].codigo,20,stdin);
+    printf("\nInira a quantidade em estoque\n");
+    scanf("%d",&produto[i].estoque);
+    printf("\nInsira o preço unitário\n");
+    scanf("%.2f",&produto[i].preco);
+    
+}
