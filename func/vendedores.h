@@ -9,22 +9,18 @@ typedef struct Vendedor {
     float comissao;
 }Vendedor;
 
-int main() {
+Vendedor cadastrovendedor() {
 
     int i,vendascom,flag;
-    Vendedor vendedor[100000];
-    while(flag){
+    Vendedor vendedor;
     printf("\nInsira o nome do vendedor\n");
-    fgets(vendedor[i].nome,100,stdin);
+    fgets(vendedor.nome,100,stdin);
     printf("\nInsira o numero do vendedor\n");
-    scanf("%d",&vendedor[i].numero);
+    scanf("%d",&vendedor.numero);
     printf("\nInsira o salário fixo atual do vendedor\n");
-    scanf("%.2f",&vendedor[i].salario);
+    scanf("%.2f",&vendedor.salario);
     printf("\nInsira as vendas a serem comicionadas\n");
     scanf("%d",&vendascom);
-    vendedor[i].comissao=(vendascom/100)*3;
-    i++;
-    printf("\nDeseja cadastrar mais um vendedor?\nSim=1\nNão=0\n");
-    scanf("%d",&flag);
-    }
+    vendedor.comissao=(vendascom/100)*3;
+    return vendedor;
 }
