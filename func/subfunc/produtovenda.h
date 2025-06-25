@@ -10,16 +10,16 @@ typedef struct Produtovenda {
     float precototal;
 }Produtovenda;
 
-Produtovenda cadastroprodutovenda(int i) {
-    Produtovenda produtovenda[i];
+Produtovenda cadastroprodutovenda() {
+    Produtovenda produtovenda;
     printf("\nInsira o nome do produto\n");
-    fgets(produtovenda[i].nome,100,stdin);
+    fgets(produtovenda.nome,100,stdin);
     printf("\nInsira o codigo do produto\n");
-    fgets(produtovenda[i].codigo,100,stdin);
+    fgets(produtovenda.codigo,100,stdin);
     printf("\nInsira o quantidade vendida\n");
-    scanf("%d",&produtovenda[i].quantidade);
+    scanf("%d",&produtovenda.quantidade);
     printf("\nInsira o preço unitário\n");
-    scanf("%.2f",&produtovenda[i].precounidade);
-    produtovenda[i].precototal=produtovenda[i].quantidade*produtovenda[i].precounidade;
-    return produtovenda[i];
+    scanf("%.2f",&produtovenda.precounidade);
+    produtovenda.precototal=produtovenda.quantidade*produtovenda.precounidade;
+    return produtovenda;
 }

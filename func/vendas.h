@@ -5,24 +5,24 @@
 
 typedef struct Venda {
     char codigovenda[10];
+    Produtovenda produto;
     float valortotal;
 }Venda;
 
 Venda cadastrovenda() {
 
-    int i,i2,flag2,flag;
+    int i,flag2,flag;
     while(flag){
-    Venda venda[i];
+    Venda venda;
     printf("\nInsira o nome do vendedor\n");
-    fgets(venda[i].codigovenda,100,stdin);
+    fgets(venda.codigovenda,100,stdin);
     while(flag2){
-    Produtovenda produtovenda=cadastroprodutovenda(i2);
-    i2++;
+    Produtovenda produtovenda=cadastroprodutovenda();
+    i++;
     printf("\nDeseja cadastrar mais um produto na venda?\nSim=1\nNão=0\n");
     scanf("%d",&flag2);
     }
-    i++;
-    printf("\nDeseja cadastrar mais uma venda?\nSim=1\nNão=0\n");
+    printf("\nConfirmar o cadastro?\nSim=1\nNão=0\n");
     scanf("%d",&flag);
     }
 }

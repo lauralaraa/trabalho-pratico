@@ -10,14 +10,14 @@ typedef struct Produto {
 }Produto;
 
 Produto cadastroproduto() {
-    Produto produto[i];
+    Produto produto;
     printf("\nInsira o nome do produto\n");
-    fgets(produto[i].nome,100,stdin);
+    fgets(produto.nome,100,stdin);
     printf("\nInsira o codigo do produto\n");
-    fgets(produto[i].codigo,20,stdin);
+    fgets(produto.codigo,20,stdin);
     printf("\nInira a quantidade em estoque\n");
-    scanf("%d",&produto[i].estoque);
+    scanf("%d",&produto.estoque);
     printf("\nInsira o preço unitário\n");
-    scanf("%.2f",&produto[i].preco);
+    scanf("%.2f",&produto.preco);
     
 }

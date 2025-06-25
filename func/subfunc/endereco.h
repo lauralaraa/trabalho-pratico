@@ -9,19 +9,19 @@ typedef struct Endereco {
     char cep[20];
 }Endereco;
 
-Endereco cadastroendereco(int i) {
+Endereco cadastroendereco() {
 
-     int i,flag;
+     int flag;
     while(flag){
-    Endereco Endereco[i];
+    Endereco Endereco;
     printf("\nInsira o nome da sua rua:\n");
-    fgets(Endereco[i].rua,50,stdin);
+    fgets(Endereco.rua,50,stdin);
     printf("\nInsira o nome do seu bairro:\n");
-    fgets(Endereco[i].bairro,50,stdin);
+    fgets(Endereco.bairro,50,stdin);
     printf("\nInsira a cidade em que você mora:\n");
-    fgets(Endereco[i].cidade,50,stdin);
+    fgets(Endereco.cidade,50,stdin);
     printf("\nInsira o CEP\n");
-    fgets(Endereco[i].cep,50,stdin);
+    fgets(Endereco.cep,50,stdin);
     
     printf("\nAs informações estão corretas?\nSim=1\nNão=0\n");
     scanf("%d",&flag);
