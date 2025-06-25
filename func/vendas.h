@@ -8,7 +8,7 @@ typedef struct Venda {
     float valortotal;
 }Venda;
 
-int main() {
+Venda cadastrovenda() {
 
     int i,i2,flag2,flag;
     while(flag){

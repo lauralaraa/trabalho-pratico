@@ -10,7 +10,7 @@ typedef struct Comprador {
 }Comprador;
 
 
-Comprador cadastroComprador () {
+Comprador cadastrocomprador () {
     int i;
     Comprador infoComprador;
     Endereco endereco[i];

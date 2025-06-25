@@ -9,7 +9,7 @@ typedef struct Produto {
     float preco;
 }Produto;
 
-Produto produto(int i) {
+Produto cadastroproduto() {
     Produto produto[i];
     printf("\nInsira o nome do produto\n");
     fgets(produto[i].nome,100,stdin);
