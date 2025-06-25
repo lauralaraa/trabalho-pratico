@@ -20,5 +20,5 @@ Comprador cadastroComprador () {
     fgets(infoComprador.cpf,15,stdin);
     printf("\nInsira o email do comprador: ");
     fgets(infoComprador.cpf,15,stdin);
-    Endereco endereco[i]=cadastro_endereco(i);
+    Endereco endereco[i]=cadastroendereco(i);
 };
