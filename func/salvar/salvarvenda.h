@@ -2,11 +2,12 @@
 #include<stdlib.h>
 #include<string.h>
 #include<vendas.h>
+#include<produtovenda.h>
 
 void salvarProduto(Venda v) {
-    FILE *arquivo = fopen("produtos.txt", "a");
+    FILE *arquivo = fopen("vendas.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "\n", );
+        fprintf(arquivo, "%s;%s;%s;%.2f;%.2f%\n", v.codigovenda, v.produto.codigo, v.produto.nome, v.produto.precounidade, v.produto.precototal);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
