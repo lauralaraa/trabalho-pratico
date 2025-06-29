@@ -11,7 +11,7 @@ typedef struct Vendedor {
 
 Vendedor cadastrovendedor() {
 
-    int i,vendascom,flag;
+    int vendascom,flag;
     Vendedor vendedor;
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor.nome,100,stdin);
@@ -19,8 +19,7 @@ Vendedor cadastrovendedor() {
     scanf("%d",&vendedor.numero);
     printf("\nInsira o salário fixo atual do vendedor\n");
     scanf("%.2f",&vendedor.salario);
-    printf("\nInsira as vendas a serem comicionadas\n");
-    scanf("%d",&vendascom);
+    vendascom=vendascom;
     vendedor.comissao=(vendascom/100)*3;
     return vendedor;
 }
