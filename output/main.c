@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<vendedores.h>
-#include<comprador.h>
-#include<vendas.h>
-#include<produtos.h>
+#include<cadastrocomprador.h>
+#include<cadastrovendas.h>
+#include<cadastroprodutos.h>
+#include<cadastrovendedores.h>
 
 int main()
 {
