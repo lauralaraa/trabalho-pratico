@@ -1,8 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<vendas.h>
-#include<produtovenda.h>
+#include<cadastrovendas.h>
+#include<cadastroprodutovenda.h>
 
 void salvarProduto(Venda v) {
     FILE *arquivo = fopen("vendas.txt", "a");

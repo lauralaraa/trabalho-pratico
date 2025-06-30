@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include<vendedores.h>
+#include<cadastrovendedores.h>
 
 void salvarVendedor(Vendedor v) {
     FILE *arquivo = fopen("vendedores.txt", "a");

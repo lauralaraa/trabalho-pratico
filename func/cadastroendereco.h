@@ -25,7 +25,8 @@ Endereco cadastroendereco() {
     
     printf("\nAs informações estão corretas?\nSim=1\nNão=0\n");
     scanf("%d",&flag);
-    
+
+    return Endereco;
     }
 
 }

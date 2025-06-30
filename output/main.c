@@ -1,9 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<cadastrocomprador.h>
-#include<cadastrovendas.h>
-#include<cadastroprodutos.h>
-#include<cadastrovendedores.h>
+#include"cadastrocomprador.h"
+#include"cadastrovendas.h"
+#include"cadastroprodutos.h"
+#include"cadastrovendedores.h"
+#include"salvarvenda.h"
+#include"salvarproduto.h"
+#include"salvarcomprador.h"
+#include"salvarvendedor.h"
 
 int main()
 {
