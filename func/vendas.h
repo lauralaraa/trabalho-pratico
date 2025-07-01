@@ -80,8 +80,50 @@ typedef struct Venda {
     }
 
     void deletarVenda() {
-
+    int id;
+    
+    
+    printf("Digite o ID da venda que deseja remover: ");  // <- Pede o id de venda para remover
+    scanf("%d", &id);
+    limparBuffer();
+    
+    FILE *arquivo = fopen("vendas.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
+    
+    if(arquivo == NULL || temp == NULL) {
+        printf("Erro ao abrir arquivos!\n");
+        return;
     }
+    
+    char linha[200];
+    int encontrado = 0;
+    
+    while(fgets(linha, 200, arquivo) != NULL) {
+        int idAtual;
+        sscanf(linha, "%d", &idAtual);
+        
+        if(idAtual != id) {
+            fprintf(temp, "%s", linha);
+        } else {
+            encontrado = 1;
+        }
+    }
+    
+    fclose(arquivo);
+    fclose(temp);
+    
+    if(encontrado) {
+        remove("vendas.txt");
+        rename("temp.txt", "vendas.txt");
+        printf("Venda removida com sucesso!\n");
+    } else {
+        remove("temp.txt");
+        printf("Venda não encontrada!\n");
+    }
+    
+    printf("Pressione Enter para continuar...");
+    getchar();
+}
 
     void consultarVenda() {
 
