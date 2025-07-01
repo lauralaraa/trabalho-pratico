@@ -145,8 +145,50 @@ void editarComprador() {
 
 
 void deletarComprador() {
+    char cpf[15];
+    int encontrado = 0;
     
+    printf("Digite o CPF do comprador que deseja remover: ");
+    fgets(cpf, 15, stdin);
+    cpf[strcspn(cpf, "\n")] = '\0'; 
+    
+    FILE *arquivo = fopen("compradores.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
+    
+    if(arquivo == NULL || temp == NULL) {
+        printf("Erro ao abrir arquivos!\n");
+        return;
+    }
+    
+    char linha[300];
+    while(fgets(linha, 300, arquivo) != NULL) {
+
+        char cpfAtual[15];
+        sscanf(linha, "%*[^;];%[^;]", cpfAtual);
+        
+        if(strcmp(cpfAtual, cpf) != 0) {
+            fprintf(temp, "%s", linha);
+        } else {
+            encontrado = 1;
+        }
+    }
+    
+    fclose(arquivo);
+    fclose(temp);
+    
+    if(encontrado) {
+        remove("compradores.txt");
+        rename("temp.txt", "compradores.txt");
+        printf("Comprador removido com sucesso!\n");
+    } else {
+        remove("temp.txt");
+        printf("Comprador não encontrado!\n");
+    }
+    
+    printf("Pressione Enter para continuar...");
+    getchar();
 }
+    
 
 void consultarComprador() {
 
