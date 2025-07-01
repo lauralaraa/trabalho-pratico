@@ -13,7 +13,7 @@ typedef struct Venda {
     char vendedor[10];
     int quantidade;
     float valortotal;
-} Venda ;
+} Venda;
 
     int proximoIDvenda() {
 

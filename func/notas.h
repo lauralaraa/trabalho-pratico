@@ -1,8 +1,10 @@
 #ifndef NOTAS_H
 #define NOTAS_H
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+
 #include "compradores.h"
 #include "produtos.h"
 #include "vendas.h"

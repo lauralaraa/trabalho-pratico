@@ -44,15 +44,15 @@ void cadastrarProduto() {
     limparBuffer();
     system("cls||clear");
 
-    printf("\nInsira o nome do produto\n");
+    printf("\nInsira o nome do produto: ");
     fgets(produto.nome, 100, stdin);
     produto.nome[strcspn(produto.nome, "\n")] = 0;
 
-    printf("\nInsira a quantidade em estoque\n");
+    printf("\nInsira a quantidade em estoque: ");
     scanf("%d", &produto.estoque);
     limparBuffer();
 
-    printf("\nInsira o preco unitario\n");
+    printf("\nInsira o preco unitario: ");
     scanf("%f", &produto.preco);
     limparBuffer();
     system("cls||clear");

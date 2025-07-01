@@ -34,14 +34,19 @@ void cadastrarComprador () {
 
     printf("\nInsira o nome do comprador: ");
     fgets(comprador.nome,100,stdin);
+    comprador.nome[strcspn(comprador.nome, "\n")] = 0;
     system("cls||clear");
 
     printf("\nInsira o cpf do comprador: ");
     fgets(comprador.cpf,15,stdin);
+    comprador.cpf[strcspn(comprador.cpf, "\n")] = 0;
     system("cls||clear");
+
+    limparBuffer();
 
     printf("\nInsira o email do comprador: ");
     fgets(comprador.email,15,stdin);
+    comprador.email[strcspn(comprador.email, "\n")] = 0;
     system("cls||clear");
     limparBuffer();
 
