@@ -16,7 +16,7 @@ typedef struct Vendedor {
 
 int proximoIDvendedor() {
 
-     FILE *arquivo = fopen("docs/vendedores.txt", "r");
+     FILE *arquivo = fopen("vendedores.txt", "r");
     if (arquivo == NULL) {
         return 1;
     }
@@ -37,7 +37,7 @@ void buscarVendedor() {
 
 void cadastrarVendedor() {
 
-    FILE *arquivo = fopen("docs/vendedores.txt", "a");
+    FILE *arquivo = fopen("vendedores.txt", "a");
     if (arquivo==NULL) { 
         system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");

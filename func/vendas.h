@@ -17,7 +17,7 @@ typedef struct Venda {
 
     int proximoIDvenda() {
 
-        FILE *arquivo = fopen("docs/vendas.txt", "r");
+        FILE *arquivo = fopen("vendas.txt", "r");
     if (arquivo==NULL) {
         return 1;
     }
@@ -51,7 +51,7 @@ typedef struct Venda {
 
     void cadastrarVenda() {
 
-    FILE *arquivo = fopen("docs/vendas.txt", "a");
+    FILE *arquivo = fopen("vendas.txt", "a");
     if (arquivo==NULL) { 
         system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
