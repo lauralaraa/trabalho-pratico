@@ -16,7 +16,7 @@ void buscarVendedor() {
 
 }
 
-Vendedor cadastroVendedor() {
+Vendedor cadastrarVendedor() {
 
     int vendascom,flag;
     Vendedor vendedor;
@@ -44,6 +44,44 @@ void editarVendedor() {
 }
 
 void deletarVendedor() {
+
+}
+
+void consultarVendedor() {
+
+}
+
+void menuVendedor() {
+
+    system("cls||clear");
+
+    int select;
+
+    printf("\nVendedores\n\n");
+
+    printf("[1] Cadastrar\n");
+    printf("[2] Consultar\n");
+    printf("[3] Editar\n");
+    printf("[4] Excluir\n\n");
+    printf("[0] Voltar\n\n: ");
+    
+    scanf("%d",&select);
+
+    switch(select) {
+
+        case 0: MainMenu(); break;
+
+        case 1: cadastrarVendedor(1); break;
+        
+        case 2: consultarVendedor(); break;
+
+        case 3: editarVendedor(); break;
+
+        case 4: deletarVendedor(); break;
+
+        default: menuVendedor(); break;
+
+    }
 
 }
 

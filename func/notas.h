@@ -36,5 +36,4 @@ void gerarNota() {
     }
 }
 
-
 #endif
