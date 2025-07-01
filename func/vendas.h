@@ -51,7 +51,7 @@ typedef struct Venda {
 
     void cadastrarVenda() {
 
-    FILE *arquivo = fopen("produtos.txt", "a");
+    FILE *arquivo = fopen("vendas.txt", "a");
     if (arquivo==NULL) { 
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
