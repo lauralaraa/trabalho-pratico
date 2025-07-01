@@ -59,7 +59,7 @@ void cadastrarProduto() {
 
     produto.id=proximoIDproduto();
     
-    fprintf(arquivo, "%d;%s;%d;%f\n", produto.id, produto.nome, produto.estoque, produto.preco);
+    fprintf(arquivo, "%d;%s;%d;%.2f\n", produto.id, produto.nome, produto.estoque, produto.preco);
     fflush(arquivo);
     fclose(arquivo);
 
@@ -78,8 +78,8 @@ void editarProduto() {
     scanf("%d", &idBusca);
     limparBuffer();
 
-    FILE *arquivoOriginal = fopen(CAMINHO_PRODUTOS, "r");
-    FILE *arquivoTemp = fopen(CAMINHO_PRODUTOS_TEMP, "w");
+    FILE *arquivoOriginal = fopen("produtos.txt", "r");
+    FILE *arquivoTemp = fopen("produtos_temp.txt", "w");
 
     if (arquivoOriginal == NULL || arquivoTemp == NULL) {
         printf("\nErro ao abrir os arquivos! Verifique se 'produtos.txt' existe.\n");
@@ -93,18 +93,23 @@ void editarProduto() {
             encontrado = 1;
             printf("\n--- Produto Encontrado (ID: %d) ---\n", produto.id);
             printf("Nome atual: %s\n", produto.nome);
+            system("pause");
+            system("cls||clear");
             printf("------------------------------------\n");
             printf("Insira os novos dados:\n");
 
             printf("Novo nome do produto:\n");
             fgets(produto.nome, 100, stdin);
             produto.nome[strcspn(produto.nome, "\n")] = 0;
+            system("cls||clear");
 
             printf("Nova quantidade em estoque: ");
             scanf("%d", &produto.estoque);
+            system("cls||clear");
 
             printf("Novo preco unitario: ");
             scanf("%f", &produto.preco);
+            system("cls||clear");
             limparBuffer();
 
             fprintf(arquivoTemp, "%d;%s;%d;%.2f\n", produto.id, produto.nome, produto.estoque, produto.preco);
@@ -118,10 +123,10 @@ void editarProduto() {
     fclose(arquivoTemp);
 
     if (encontrado) {
-        remove(CAMINHO_PRODUTOS);
-        rename(CAMINHO_PRODUTOS_TEMP, CAMINHO_PRODUTOS);
+        remove("produtos.txt");
+        rename("produtos_temp.txt", "produtos.txt");
     } else {
-        remove(CAMINHO_PRODUTOS_TEMP);
+        remove("produtos_temp.txt");
         printf("\nERRO: Produto com o ID '%d' não foi encontrado.\n", idBusca);
     }
 
@@ -146,7 +151,7 @@ void menuProduto() {
     printf("[1] Cadastrar\n");
     printf("[2] Consultar\n");
     printf("[3] Editar\n");
-    printf("[4] Excluir\n\n");
+    printf("[4] Deletar\n\n");
     printf("[0] Voltar\n\n: ");
 
     scanf("%d", &select);
