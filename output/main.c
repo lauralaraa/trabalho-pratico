@@ -18,16 +18,16 @@ int main()
     printf("\nOque deseja cadastrar?\nComprador=1\nVendedor=2\nProduto=3\nVenda=4\n");
     scanf("%d",&verificador2);
     if(verificador2==1){
-        Comprador vendedor=cadastrocomprador();
+        cadastrocomprador();
         salvarComprador();
     }else if(verificador2==2){
-        Vendedor vendedor=cadastrovendedor();
+        cadastrovendedor();
         salvarVendedor();
     }else if(verificador2==3){
-        Produto vendedor=cadastroproduto();
+        cadastroproduto();
         salvarProduto();
     }else if(verificador2==4){
-        Venda vendedor=cadastrovenda();
+        cadastrovenda();
         salvarVenda();
     }
     }
