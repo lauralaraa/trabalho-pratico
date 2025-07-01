@@ -1,23 +1,2 @@
-eu
-;21
-;email
-;
-;
-,
-,
 
-Mael
-;12345678
-;email@gmail.co;bairro
-;rua
-,cidade
-,cep
-
-noel
-;1234354
-;email
-;bairroo
-;ruaaa
-,cidadeee
-,1313
 

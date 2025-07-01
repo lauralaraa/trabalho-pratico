@@ -6,10 +6,6 @@
 #include <stdio.h>
 
 #include "limparbuffer.h"
-
-#define CAMINHO_PRODUTOS "docs/produtos.txt"
-#define CAMINHO_PRODUTOS_TEMP "docs/produtos_temp.txt"
-
 typedef struct Produto {
     char nome[100];
     int id;
@@ -19,7 +15,7 @@ typedef struct Produto {
 
 int proximoIDproduto() {
 
-    FILE *arquivo = fopen("docs/produtos.txt", "r");
+    FILE *arquivo = fopen("produtos.txt", "r");
     if (arquivo==NULL) {
         return 1;
     }
@@ -36,7 +32,7 @@ int proximoIDproduto() {
 
 void cadastrarProduto() {
 
-    FILE *arquivo = fopen("docs/produtos.txt", "a");
+    FILE *arquivo = fopen("produtos.txt", "a");
     if (arquivo==NULL) { 
         system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
@@ -62,7 +58,6 @@ void cadastrarProduto() {
     system("cls||clear");
 
     produto.id=proximoIDproduto();
-    
     
     fprintf(arquivo, "%d;%s;%d;%f\n", produto.id, produto.nome, produto.estoque, produto.preco);
     fflush(arquivo);
