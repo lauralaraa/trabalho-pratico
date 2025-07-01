@@ -6,24 +6,41 @@
 #include"endereco.h"
 #include"produtos.h"
 
+void Menu( void ) {
+
+    system(" cls || clear ");
+
+    int input;
+    
+    printf("\nMenu Principal\n\n");
+
+    printf("[1] Produtos\n");
+    printf("[2] Vendedores\n");
+    printf("[3] Clientes\n");
+    printf("[4] Vendas\n\n");
+    printf("[0] Sair\n\n: ");
+
+    scanf("%d", &input);
+
+    switch ( input ) {
+
+        case 0: break;
+
+        case 1: MenuProdutos(); break;
+
+        case 2: MenuVendedores(); break;
+
+        case 3: MenuClientes(); break;
+
+        case 4: MenuVendas(); break;
+
+        default: MenuPrincipal(); break;
+        
+    }
+    
+}
 
 int main()
 {
-    int verificador1,verificador2,verificador3;
-    printf("Qual operação deseja realizar?\nCadastro=0\nExibição=1\n");
-    scanf("%d",&verificador1);
-    if(verificador1){
-    printf("\nOque deseja cadastrar?\nComprador=1\nVendedor=2\nProduto=3\nVenda=4\n");
-    scanf("%d",&verificador2);
-    if(verificador2==1){
-        cadastroComprador();
-    }else if(verificador2==2){
-        cadastroVendedor();
-    }else if(verificador2==3){
-        cadastroProduto();
-    }else if(verificador2==4){
-        cadastroVenda();
-    }
-    }
-    
+    Menu();
 }
