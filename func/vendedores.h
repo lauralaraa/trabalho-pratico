@@ -140,7 +140,51 @@ void editarVendedor() {
 
 
 void deletarVendedor() {
-
+    int id;
+    
+    
+    printf("Digite o ID do vendedor que deseja remover: ");  //<- Pega o id do vendedor
+    scanf("%d", &id);
+    limparBuffer();
+    
+    FILE *arquivo = fopen("vendedores.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
+    
+    if(arquivo == NULL || temp == NULL) {
+        printf("Erro ao abrir arquivos!\n");
+        return;
+    }
+    
+    char linha[200];
+    int encontrado = 0;
+    
+    while(fgets(linha, 200, arquivo) != NULL) {
+        
+        int idAtual;
+        sscanf(linha, "%*[^;];%d", &idAtual);
+        
+        
+        if(idAtual != id) {                 //<- Se não for o vendedor a ser deletado, copia para o novo arquivo
+            fprintf(temp, "%s", linha);
+        } else {
+            encontrado = 1;
+        }
+    }
+    
+    fclose(arquivo);
+    fclose(temp);
+    
+    if(encontrado) {
+        remove("vendedores.txt");
+        rename("temp.txt", "vendedores.txt");
+        printf("Vendedor removido com sucesso!\n");
+    } else {
+        remove("temp.txt");
+        printf("Vendedor não encontrado!\n");
+    }
+    
+    printf("Pressione Enter para continuar...");
+    getchar();
 }
 
 void consultarVendedor() {
