@@ -73,7 +73,7 @@ typedef struct Venda {
 
     int select;
 
-    printf("\nCompradores\n\n");
+    printf("\nVendas\n\n");
 
     printf("[1] Cadastrar\n");
     printf("[2] Consultar\n");
@@ -87,17 +87,10 @@ typedef struct Venda {
     switch(select) {
 
         case 0: main(); break;
-
-        case 1: cadastrarComprador(1); break;
-        
-        case 2: consultarComprador(); break;
-
-        case 3: editarComprador(); break;
-
-        case 4: deletarComprador(); break;
-
-        case 5: gerarNota(); break;
-
+        case 1: cadastrarVenda(); break;
+        case 2: consultarVenda(); break;
+        case 3: editarVenda(); break;
+        case 4: deletarVenda(); break;
         default: menuComprador(); break;
 
     }

@@ -38,13 +38,17 @@ void cadastrarProduto() {
 
     Produto produto;
     getchar();
+    system("cls||clear");
     printf("\nInsira o nome do produto\n");
     fgets(produto.nome, 100, stdin);
+    system("cls||clear");
     printf("\nInira a quantidade em estoque\n");
     scanf("%d",&produto.estoque);
+    system("cls||clear");
     printf("\nInsira o preco unitario\n");
     scanf("%f",&produto.preco);
     getchar();
+    system("cls||clear");
     
     FILE *arquivo = fopen("produtos.txt", "a");
     if (arquivo != NULL) {
@@ -53,6 +57,8 @@ void cadastrarProduto() {
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
+
+    main();
 
 }
 
@@ -88,7 +94,7 @@ void menuProduto() {
 
         case 0: main(); break;
 
-        case 1: cadastrarProduto(1); break;
+        case 1: cadastrarProduto(); break;
         
         case 2: consultarProduto(); break;
 

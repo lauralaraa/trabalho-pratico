@@ -21,14 +21,13 @@ void cadastrarComprador () {
 
     Comprador comprador;
 
+    getchar();
     printf("\nInsira o nome do comprador: ");
     fgets(comprador.nome,100,stdin);
-    getchar();
     printf("\nInsira o codigo do produto: ");
     fgets(comprador.cpf,15,stdin);
-    getchar();
     printf("\nInsira o email do comprador: ");
-    fgets(comprador.cpf,15,stdin);
+    fgets(comprador.email,15,stdin);
     getchar();
     comprador.endereco=cadastrarEndereco();
 
@@ -39,6 +38,8 @@ void cadastrarComprador () {
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
+
+    main();
     
 }
 
@@ -74,7 +75,7 @@ void menuComprador() {
 
         case 0: main(); break;
 
-        case 1: cadastrarComprador(1); break;
+        case 1: cadastrarComprador(); break;
         
         case 2: consultarComprador(); break;
 

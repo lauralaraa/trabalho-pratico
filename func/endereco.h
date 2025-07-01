@@ -15,15 +15,13 @@ typedef struct Endereco {
 Endereco cadastrarEndereco() {
 
     Endereco Endereco;
+    getchar();
     printf("\nInsira o nome da sua rua:\n");
     fgets(Endereco.rua,50,stdin);
-    getchar();
     printf("\nInsira o nome do seu bairro:\n");
     fgets(Endereco.bairro,50,stdin);
-    getchar();
     printf("\nInsira a cidade em que voce mora:\n");
     fgets(Endereco.cidade,50,stdin);
-    getchar();
     printf("\nInsira o CEP\n");
     fgets(Endereco.cep,50,stdin);
     getchar();

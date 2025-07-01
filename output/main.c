@@ -25,17 +25,12 @@
     scanf("%d",&select);
 
     switch (select) {
-
+        
         case 0: break;
-
         case 1: menuProduto(); break;
-
         case 2: menuVendedor(); break;
-
         case 3: menuComprador(); break;
-
         case 4: menuVenda(); break;
-
         default: main(); break;
         
     }
