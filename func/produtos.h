@@ -134,9 +134,52 @@ void editarProduto() {
     getchar();
 }
 
-void deletarProduto() {
-    // implementar depois
+  void deletarProduto() {
+    int id;
+    
+    printf("Digite o ID do produto que deseja remover: ");
+    scanf("%d", &id);
+    limparBuffer();
+    
+    FILE *arquivo = fopen("docs/produtos.txt", "r");
+    FILE *temp = fopen("docs/temp.txt", "w");
+    
+    if(arquivo == NULL || temp == NULL) {
+        printf("Erro ao abrir arquivos!\n");
+        return;
+    }
+    
+    char linha[200];
+    int encontrado = 0;
+    
+    while(fgets(linha, 200, arquivo) != NULL) {
+
+        int idAtual;
+        sscanf(linha, "%d", &idAtual);
+        
+        if(idAtual != id) {
+            fprintf(temp, "%s", linha);
+        } else {
+            encontrado = 1;
+        }
+    }
+    
+    fclose(arquivo);
+    fclose(temp);
+    
+    if(encontrado) {
+        remove("docs/produtos.txt");
+        rename("docs/temp.txt", "docs/produtos.txt");
+        printf("Produto removido com sucesso!\n");
+    } else {
+        remove("docs/temp.txt");
+        printf("Produto não encontrado!\n");
+    }
+    
+    printf("Pressione Enter para continuar...");
+    getchar();
 }
+
 
 void consultarProduto() {
     // implementar depois
