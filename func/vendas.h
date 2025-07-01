@@ -15,6 +15,8 @@ typedef struct Venda {
 
     void proximoIDvenda() {
 
+        
+
     }
 
     void buscarVenda() {

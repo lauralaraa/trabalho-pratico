@@ -7,12 +7,27 @@
 
 typedef struct Vendedor {
     char nome[100];
-    int numero;
+    int codigo;
     float salario;
     float comissao;
 }Vendedor;
 
-void proximoIDvendedor() {
+int proximoIDvendedor() {
+
+     FILE *arquivo = fopen("vendedores.txt", "r");
+    if (arquivo == NULL) {
+        return 1;
+    }
+    Vendedor v;
+    int id = 0;
+    while (fscanf(arquivo, "%49[^,],%d,%f,%f\n",&v.nome,&v.codigo,&v.salario,&v.comissao) == 4) {
+        if (v.codigo > id) {
+            id = v.codigo;
+        }
+    }
+    fclose(arquivo);
+    return id+1;
+
 
 }
 
@@ -27,8 +42,6 @@ void cadastrarVendedor() {
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor.nome,100,stdin);
     getchar();
-    printf("\nInsira o numero do vendedor\n");
-    scanf("%d",&vendedor.numero);
     printf("\nInsira o salario fixo atual do vendedor\n");
     scanf("%.2f",&vendedor.salario);
     vendascom=vendascom;
@@ -36,7 +49,7 @@ void cadastrarVendedor() {
 
        FILE *arquivo = fopen("vendedores.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%d;%d;%.2f\n", vendedor.nome, vendedor.numero, vendedor.salario, vendedor.comissao);
+        fprintf(arquivo, "%s;%d;%d;%.2f\n", vendedor.nome, proximoIDvendedor(), vendedor.salario, vendedor.comissao);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");

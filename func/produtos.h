@@ -36,8 +36,6 @@ void buscarProduto() {
 
 void cadastrarProduto() {
 
- FILE *arquivo = fopen("produtos.txt", "a");
-
     Produto produto;
     getchar();
     printf("\nInsira o nome do produto\n");
@@ -48,8 +46,9 @@ void cadastrarProduto() {
     scanf("%f",&produto.preco);
     getchar();
     
+    FILE *arquivo = fopen("produtos.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%s;%d;%f\n", produto.nome, proximoIDproduto(), produto.estoque, produto.preco);
+        fprintf(arquivo, "%s;%d;%d;%f\n", produto.nome, proximoIDproduto(), produto.estoque, produto.preco);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
