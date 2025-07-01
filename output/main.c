@@ -1,12 +1,14 @@
 #include<stdio.h>
+#include<string.h>
 #include<stdlib.h>
-#include"compradores.h"
-#include"vendas.h"
-#include"vendedores.h"
-#include"endereco.h"
-#include"produtos.h"
+#include "../func/produtos.h"
+#include "../func/vendedores.h"
+#include "../func/compradores.h"
+#include "../func/vendas.h"
+#include "../func/endereco.h"
+#include "../func/notas.h"
 
-    void MainMenu() {
+    int main() {
 
     system("cls||clear");
 
@@ -34,13 +36,8 @@
 
         case 4: menuVenda(); break;
 
-        default: MainMenu(); break;
+        default: main(); break;
         
     }
     
-}
-
-int main()
-{
-    MainMenu();
 }

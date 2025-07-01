@@ -2,6 +2,10 @@
 #define VENDAS_H
 #include"notas.h"
 
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
 typedef struct Venda {
     char codigovenda[10];
     char vendedor[10];
@@ -29,7 +33,7 @@ typedef struct Venda {
         
     }
 
-    Venda cadastrarVenda() {
+    void cadastrarVenda() {
 
     Venda venda;
 
@@ -80,7 +84,7 @@ typedef struct Venda {
 
     switch(select) {
 
-        case 0: MainMenu(); break;
+        case 0: main(); break;
 
         case 1: cadastrarComprador(1); break;
         

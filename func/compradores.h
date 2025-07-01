@@ -2,6 +2,10 @@
 #define COMPRADORES_H
 #include"endereco.h"
 
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
 typedef struct Comprador {
     char nome[100];
     char cpf[15];
@@ -9,15 +13,11 @@ typedef struct Comprador {
     Endereco endereco;
 }Comprador;
 
-void proximoIDcomprador() {
-
-}
-
 void buscarComprador() {
 
 }
 
-Comprador cadastrarComprador () {
+void cadastrarComprador () {
 
     Comprador comprador;
 
@@ -72,7 +72,7 @@ void menuComprador() {
 
     switch(select) {
 
-        case 0: MainMenu(); break;
+        case 0: main(); break;
 
         case 1: cadastrarComprador(1); break;
         

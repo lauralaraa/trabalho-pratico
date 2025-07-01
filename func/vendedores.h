@@ -1,6 +1,10 @@
 #ifndef VENDEDORES_H
 #define VENDEDORES_H
 
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
 typedef struct Vendedor {
     char nome[100];
     int numero;
@@ -16,16 +20,16 @@ void buscarVendedor() {
 
 }
 
-Vendedor cadastrarVendedor() {
+void cadastrarVendedor() {
 
-    int vendascom,flag;
+    int vendascom;
     Vendedor vendedor;
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor.nome,100,stdin);
     getchar();
     printf("\nInsira o numero do vendedor\n");
     scanf("%d",&vendedor.numero);
-    printf("\nInsira o salário fixo atual do vendedor\n");
+    printf("\nInsira o salario fixo atual do vendedor\n");
     scanf("%.2f",&vendedor.salario);
     vendascom=vendascom;
     vendedor.comissao=(vendascom/100)*3;
@@ -69,7 +73,7 @@ void menuVendedor() {
 
     switch(select) {
 
-        case 0: MainMenu(); break;
+        case 0: main(); break;
 
         case 1: cadastrarVendedor(1); break;
         
