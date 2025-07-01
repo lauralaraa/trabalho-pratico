@@ -27,5 +27,11 @@ Venda cadastrovenda() {
     }
     printf("\nConfirmar o cadastro?\nSim=1\nNão=0\n");
     scanf("%d",&flag);
+
+    if (flag==1){
+        salvarvenda(venda);
     }
+    }
+
+    
 }
