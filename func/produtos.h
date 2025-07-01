@@ -68,6 +68,7 @@ void cadastrarProduto() {
     
     
     fprintf(arquivo, "%d;%s;%d;%f\n", produto.id, produto.nome, produto.estoque, produto.preco);
+    fflush(arquivo);
     fclose(arquivo);
 
     printf("\nProduto '%s' (ID: %d) cadastrado com sucesso!\n", produto.nome, produto.id);
@@ -77,6 +78,23 @@ void cadastrarProduto() {
 
 void editarProduto() {
 
+    int idBusca;
+    int encontrado = 0;
+
+    Produto produto;
+
+    system("cls||clear");
+    printf("\n---Editar Produto---\n");
+
+    printf("Digite o ID do produto que deseja editar:\n");
+    scanf("%d",&idBusca);
+    limparBuffer();
+
+    FILE *arquivoOriginal = fopen("produtos.txt", "r");
+
+    FILE *arquivoTemp = fopen("produtos_temp.txt", "w");
+
+    
 
 
 }
