@@ -26,15 +26,15 @@ void Menu( void ) {
 
         case 0: break;
 
-        case 1: MenuProdutos(); break;
+        case 1: menuProduto(); break;
 
-        case 2: MenuVendedores(); break;
+        case 2: menuVendedor(); break;
 
-        case 3: MenuClientes(); break;
+        case 3: menuComprador(); break;
 
-        case 4: MenuVendas(); break;
+        case 4: menuVenda(); break;
 
-        default: MenuPrincipal(); break;
+        default: Menu(); break;
         
     }
     
