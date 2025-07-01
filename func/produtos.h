@@ -22,7 +22,7 @@ int proximoIDproduto() {
     }
     Produto p;
     int id = 0;
-    while (fscanf(arquivo, "%d,%49[^,],%d,%f\n", &p.id, p.nome, &p.estoque, &p.preco) == 4) {
+   while (fscanf(arquivo, "%d;%99[^;];%d;%f\n", &p.id, p.nome, &p.estoque, &p.preco) == 4) {
         if (p.id > id) {
             id = p.id;
         }
@@ -67,7 +67,7 @@ void cadastrarProduto() {
     produto.id=proximoIDproduto();
     
     
-    fprintf(arquivo, "%s;%d;%d;%f\n", produto.nome, produto.id, produto.estoque, produto.preco);
+    fprintf(arquivo, "%d;%s;%d;%f\n", produto.id, produto.nome, produto.estoque, produto.preco);
     fclose(arquivo);
 
     printf("\nProduto '%s' (ID: %d) cadastrado com sucesso!\n", produto.nome, produto.id);
@@ -76,6 +76,8 @@ void cadastrarProduto() {
 }
 
 void editarProduto() {
+
+
 
 }
 
