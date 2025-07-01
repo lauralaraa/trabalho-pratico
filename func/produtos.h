@@ -16,8 +16,8 @@ typedef struct Produto {
 
 int proximoIDproduto() {
 
-    FILE *arquivo = fopen("produtos.txt", "r");
-    if (arquivo == NULL) {
+    FILE *arquivo = fopen("docs/produtos.txt", "r");
+    if (arquivo==NULL) {
         return 1;
     }
     Produto p;
@@ -38,8 +38,9 @@ void buscarProduto() {
 
 void cadastrarProduto() {
 
-    FILE *arquivo = fopen("produtos.txt", "a");
+    FILE *arquivo = fopen("docs/produtos.txt", "a");
     if (arquivo==NULL) { 
+        system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
         return;
@@ -71,6 +72,7 @@ void cadastrarProduto() {
     fflush(arquivo);
     fclose(arquivo);
 
+    system("cls||clear");
     printf("\nProduto '%s' (ID: %d) cadastrado com sucesso!\n", produto.nome, produto.id);
     system("pause");
 
@@ -125,7 +127,7 @@ void menuProduto() {
 
     switch(select) {
 
-        case 0: main(); break;
+        case 0: return; break;
         case 1: cadastrarProduto(); break;
         case 2: consultarProduto(); break;
         case 3: editarProduto(); break;

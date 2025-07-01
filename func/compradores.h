@@ -23,6 +23,7 @@ void cadastrarComprador () {
 
     FILE *arquivo = fopen("compradores.txt", "a");
     if (arquivo==NULL) { 
+        system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
     }
@@ -49,7 +50,9 @@ void cadastrarComprador () {
         fprintf(arquivo, "%s;%s;%s;%s;%s,%s,%s\n", comprador.nome, comprador.cpf, comprador.email, comprador.endereco.bairro, comprador.endereco.rua, comprador.endereco.cidade, comprador.endereco.cep);
         fclose(arquivo);
 
-    menuCompradores();
+    system("cls||clear");
+    printf("\nComprador '%s' (CPF: %s) cadastrado com sucesso!\n", comprador.nome, comprador.cpf);
+    system("pause");
     
 }
 
@@ -137,8 +140,6 @@ void editarComprador() {
         printf("\nComprador com o CPF '%s' nao foi encontrado.\n", cpfBusca);
     }
 
-    main();
-
 }
 
 
@@ -169,7 +170,7 @@ void menuComprador() {
 
     switch(select) {
 
-        case 0: main(); break;
+        case 0: return; break;
 
         case 1: cadastrarComprador(); break;
         

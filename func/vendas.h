@@ -9,15 +9,27 @@
 #include"limparbuffer.h"
 
 typedef struct Venda {
-    char codigovenda[10];
+    int id;
     char vendedor[10];
     int quantidade;
     float valortotal;
 }Venda;
 
-    void proximoIDvenda() {
+    int proximoIDvenda() {
 
-        
+        FILE *arquivo = fopen("docs/vendas.txt", "r");
+    if (arquivo==NULL) {
+        return 1;
+    }
+    Venda v;
+    int id = 0;
+    while (fscanf(arquivo, "%d;%9[^,];%d;%f\n",&v.id,&v.vendedor,&v.quantidade,&v.valortotal) == 4) {
+        if (v.id > id) {
+            id = v.id;
+        }
+    }
+    fclose(arquivo);
+    return id+1;
 
     }
 
@@ -39,8 +51,9 @@ typedef struct Venda {
 
     void cadastrarVenda() {
 
-    FILE *arquivo = fopen("vendas.txt", "a");
+    FILE *arquivo = fopen("docs/vendas.txt", "a");
     if (arquivo==NULL) { 
+        system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
     }
@@ -49,18 +62,16 @@ typedef struct Venda {
     system("cls||clear");
     limparBuffer();
 
-    printf("\nInsira o codigo da venda\n");
-    fgets(venda.codigovenda,10,stdin);
-    system("cls||clear");
-
     printf("\nInsira o codigo do vendedor\n");
     fgets(venda.vendedor,10,stdin);
     system("cls||clear");
 
-    fprintf(arquivo, "%s;%s;\n", venda.codigovenda,venda.vendedor);
+    fprintf(arquivo, "%s;%s;\n", venda.id,venda.vendedor);
     fclose(arquivo);
 
-    menuVendas();
+    system("cls||clear");
+    printf("\nVenda (ID: %d) cadastrado com sucesso!\n", venda.id);
+    system("pause");
 
     }
 

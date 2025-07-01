@@ -13,7 +13,9 @@
     system("cls||clear");
 
     int select;
+    int flag=1;
     
+    while(flag==1){
     printf("\nMenu Principal\n\n");
 
     printf("[1] Produtos\n");
@@ -25,14 +27,17 @@
     scanf("%d",&select);
 
     switch (select) {
-        
+
         case 0: break;
         case 1: menuProduto(); break;
         case 2: menuVendedor(); break;
         case 3: menuComprador(); break;
         case 4: menuVenda(); break;
-        default: main(); break;
+        default: flag=0; break;
         
     }
+
+    break;
+}
     
 }
