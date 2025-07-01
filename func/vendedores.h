@@ -30,7 +30,7 @@ int proximoIDvendedor() {
     fclose(arquivo);
     return id+1;
     
-    main();
+    menuVendedores();
 
 }
 
@@ -66,8 +66,72 @@ void cadastrarVendedor() {
 }
 
 void editarVendedor() {
- 
+
+    int codigoBusca;
+    int encontrado = 0;
+    Vendedor vendedor;
+
+    system("cls||clear");
+    printf("\nEditar Vendedor\n");
+    printf("Digite o codigo do vendedor que deseja editar: ");
+    scanf("%d", &codigoBusca);
+    limparBuffer(); 
+
+    FILE *arquivoOriginal = fopen("vendedores.txt", "r");
+    FILE *arquivoTemp = fopen("vendedores_temp.txt", "w");
+
+    if(arquivoOriginal = NULL || arquivoTemp == NULL) {
+        printf("Erro ao abrir os arquivos!\n");
+        printf("Pressione ENTER para continuar...\n");
+        getchar();
+        return;
+    }
+
+     while (fscanf(arquivoOriginal, "%[^;];%d;%f;%f\n", vendedor.nome, &vendedor.codigo, &vendedor.salario, &vendedor.comissao) == 4) {
+
+        if(vendedor.codigo == codigoBusca) {
+            encontrado = 1;
+            printf("\nVendedor encontrado (Codigo: %d)\n",vendedor.codigo);
+            printf("Nome atual: %s\n",vendedor.nome);
+            printf("--------------------------------------------------\n");
+            printf("Insira os novos dados:\n");
+
+            printf("Novo nome:\n");
+            fgets(vendedor.nome,100,stdin);
+            system("cls||clear");
+
+            printf("Novo salario fixo:\n");
+            scanf("%f",&vendedor.salario);
+            limparBuffer();
+
+            printf("\nA comissao sera mantida/recalculada em outra area.\n");
+
+            fprintf(arquivoTemp, "%s;%d;%f;%f\n",vendedor.nome,vendedor.codigo, vendedor.salario,vendedor.comissao);
+            printf("\n>> Vendedor atualizado com sucesso! <<\n");
+
+        }else {
+            fprintf(arquivoTemp, "%s;%d;%f;%f\n",vendedor.nome, vendedor.codigo,vendedor.salario,vendedor.comissao);
 }
+
+     }
+
+     fclose(arquivoOriginal);
+     fclose(arquivoTemp);
+
+     if(encontrado) {
+        remove("vendedores.txt");
+        rename("vendedores_temp.txt", "vendedores.txt");
+    } else {
+        remove("vendedores_temp.txt");
+        printf("\nERRO: Vendedor com o codigo '%d' nao foi encontrado.\n", codigoBusca);
+    }
+
+    printf("\nPressione Enter para voltar ao menu...");
+    getchar(); 
+}
+     
+ 
+
 
 void deletarVendedor() {
 
