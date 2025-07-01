@@ -38,12 +38,20 @@ void buscarProduto() {
 
 void cadastrarProduto() {
 
+    FILE *arquivo = fopen("produtos.txt", "a");
+    if (arquivo==NULL) { 
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        system("pause"); 
+        return;
+    }
+
     Produto produto;
     limparBuffer();
     system("cls||clear");
 
     printf("\nInsira o nome do produto\n");
     fgets(produto.nome, 100, stdin);
+    produto.nome[strcspn(produto.nome, "\n")] = 0;
     system("cls||clear");
 
     printf("\nInira a quantidade em estoque\n");
@@ -58,15 +66,12 @@ void cadastrarProduto() {
 
     produto.id=proximoIDproduto();
     
-    FILE *arquivo = fopen("produtos.txt", "a");
-    if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%d;%d;%f\n", produto.nome, produto.id, produto.estoque, produto.preco);
-        fclose(arquivo);
-    } else {
-        printf("Erro ao abrir o arquivo para escrita.\n");
-    }
+    
+    fprintf(arquivo, "%s;%d;%d;%f\n", produto.nome, produto.id, produto.estoque, produto.preco);
+    fclose(arquivo);
 
-    main();
+    printf("\nProduto '%s' (ID: %d) cadastrado com sucesso!\n", produto.nome, produto.id);
+    system("pause");
 
 }
 

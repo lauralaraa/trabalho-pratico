@@ -30,7 +30,7 @@ int proximoIDvendedor() {
     fclose(arquivo);
     return id+1;
     
-    main();
+    menuVendedores();
 
 }
 

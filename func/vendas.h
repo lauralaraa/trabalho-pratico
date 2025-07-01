@@ -39,22 +39,28 @@ typedef struct Venda {
 
     void cadastrarVenda() {
 
+    FILE *arquivo = fopen("produtos.txt", "a");
+    if (arquivo==NULL) { 
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        system("pause"); 
+    }
+
     Venda venda;
+    system("cls||clear");
+    limparBuffer();
 
     printf("\nInsira o codigo da venda\n");
     fgets(venda.codigovenda,10,stdin);
-    getchar();
+    system("cls||clear");
+
     printf("\nInsira o codigo do vendedor\n");
     fgets(venda.vendedor,10,stdin);
-    getchar();
+    system("cls||clear");
 
-   FILE *arquivo = fopen("vendas.txt", "a");
-    if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%s;\n", venda.codigovenda,venda.vendedor);
-        fclose(arquivo);
-    } else {
-        printf("Erro ao abrir o arquivo para escrita.\n");
-    }
+    fprintf(arquivo, "%s;%s;\n", venda.codigovenda,venda.vendedor);
+    fclose(arquivo);
+
+    menuVendas();
 
     }
 

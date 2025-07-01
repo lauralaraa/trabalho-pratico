@@ -21,6 +21,12 @@ void buscarComprador() {
 
 void cadastrarComprador () {
 
+    FILE *arquivo = fopen("compradores.txt", "a");
+    if (arquivo==NULL) { 
+        printf("Erro ao abrir o arquivo para escrita.\n");
+        system("pause"); 
+    }
+
     Comprador comprador;
     limparBuffer();
     system("cls||clear");
@@ -40,15 +46,10 @@ void cadastrarComprador () {
 
     comprador.endereco=cadastrarEndereco();
 
-    FILE *arquivo = fopen("compradores.txt", "a");
-    if (arquivo != NULL) {
         fprintf(arquivo, "%s;%s;%s;%s;%s,%s,%s\n", comprador.nome, comprador.cpf, comprador.email, comprador.endereco.bairro, comprador.endereco.rua, comprador.endereco.cidade, comprador.endereco.cep);
         fclose(arquivo);
-    } else {
-        printf("Erro ao abrir o arquivo para escrita.\n");
-    }
 
-    main();
+    menuCompradores();
     
 }
 
@@ -57,10 +58,10 @@ void editarComprador() {
     char cpfBusca[15];
     int encontrado = 0;
 
-    getchar();
-
+    system("cls||clear");
     printf("Digite o CPF do comprador que deseja editar:\n");
     fgets(cpfBusca, 15, stdin);
+    system("cls||clear");
 
     cpfBusca[strcspn(cpfBusca, "\n")] = 0;
 
@@ -80,7 +81,7 @@ void editarComprador() {
 
     while (fgets(linha, sizeof(linha), arquivoOriginal) != NULL) {
         sscanf(linha, "%[^;];%[^;];%[^;];%[^;];%[^,],%[^,],%[^\n]",
-        comprador.nome,
+               comprador.nome,
                comprador.cpf,
                comprador.email,
                comprador.endereco.bairro,
