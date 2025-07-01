@@ -7,7 +7,7 @@
 #include "produtos.h"
 #include "vendas.h"
 
-void gerarNota(Comprador infoComprador, Venda infoVenda, Produto infoProduto) {
+void gerarNota(Comprador infoComprador, Produto infoProduto, Venda infoVenda) {
 
     FILE *arquivoNota = fopen("nota.txt", "w");
     

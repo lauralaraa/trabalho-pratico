@@ -13,7 +13,7 @@ typedef struct Venda {
     char vendedor[10];
     int quantidade;
     float valortotal;
-}Venda;
+} Venda ;
 
     int proximoIDvenda() {
 
@@ -105,7 +105,7 @@ typedef struct Venda {
 
     switch(select) {
 
-        case 0: main(); break;
+        case 0: return; break;
         case 1: cadastrarVenda(); break;
         case 2: consultarVenda(); break;
         case 3: editarVenda(); break;
