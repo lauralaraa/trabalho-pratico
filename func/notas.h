@@ -41,7 +41,7 @@ void gerarNota(Comprador infoComprador, Produto infoProduto, Venda infoVenda) {
         }
         else {
             fprintf(arquivoNota, "Valor da infoVenda: %.2f\n", infoVenda.valortotal);
-            fprintf(arquivoNota, "Frete grátis para compras acima de R$ 300,00!\n");
+            fprintf(arquivoNota, "Frete gratis para compras acima de R$ 300,00!\n");
             fprintf(arquivoNota, "Valor total: R$ %.2f\n", infoVenda.valortotal);
         }
 

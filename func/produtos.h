@@ -141,8 +141,8 @@ void editarProduto() {
     scanf("%d", &id);
     limparBuffer();
     
-    FILE *arquivo = fopen("docs/produtos.txt", "r");
-    FILE *temp = fopen("docs/temp.txt", "w");
+    FILE *arquivo = fopen("produtos.txt", "r");
+    FILE *temp = fopen("temp.txt", "w");
     
     if(arquivo == NULL || temp == NULL) {
         printf("Erro ao abrir arquivos!\n");
@@ -168,11 +168,11 @@ void editarProduto() {
     fclose(temp);
     
     if(encontrado) {
-        remove("docs/produtos.txt");
-        rename("docs/temp.txt", "docs/produtos.txt");
+        remove("produtos.txt");
+        rename("temp.txt", "produtos.txt");
         printf("Produto removido com sucesso!\n");
     } else {
-        remove("docs/temp.txt");
+        remove("temp.txt");
         printf("Produto não encontrado!\n");
     }
     
@@ -200,7 +200,7 @@ void menuProduto() {
     scanf("%d", &select);
 
     switch (select) {
-        case 0: return;
+        case 0: return; break;
         case 1: cadastrarProduto(); break;
         case 2: consultarProduto(); break;
         case 3: editarProduto(); break;
