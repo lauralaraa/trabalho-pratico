@@ -33,10 +33,10 @@
         case 2: menuVendedor(); break;
         case 3: menuComprador(); break;
         case 4: menuVenda(); break;
-        default: flag==0; break;
+        default: flag=0; break;
         
     }
-    
+
     break;
 }
     

@@ -16,13 +16,13 @@ typedef struct Vendedor {
 
 int proximoIDvendedor() {
 
-     FILE *arquivo = fopen("vendedores.txt", "r");
+     FILE *arquivo = fopen("docs/vendedores.txt", "r");
     if (arquivo == NULL) {
         return 1;
     }
     Vendedor v;
     int id = 0;
-    while (fscanf(arquivo, "%49[^,],%d,%f,%f\n",&v.nome,&v.id,&v.salario,&v.comissao) == 4) {
+    while (fscanf(arquivo, "%49[^,];%d;%f;%f\n",&v.nome,&v.id,&v.salario,&v.comissao) == 4) {
         if (v.id > id) {
             id = v.id;
         }
@@ -37,8 +37,9 @@ void buscarVendedor() {
 
 void cadastrarVendedor() {
 
-    FILE *arquivo = fopen("produtos.txt", "a");
+    FILE *arquivo = fopen("docs/vendedores.txt", "a");
     if (arquivo==NULL) { 
+        system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
         return;
@@ -84,6 +85,7 @@ void editarVendedor() {
     FILE *arquivoTemp = fopen("vendedores_temp.txt", "w");
 
     if(arquivoOriginal = NULL || arquivoTemp == NULL) {
+        system("cls||clear");
         printf("Erro ao abrir os arquivos!\n");
         printf("Pressione ENTER para continuar...\n");
         getchar();
@@ -129,6 +131,7 @@ void editarVendedor() {
         printf("\nERRO: Vendedor com o codigo '%d' nao foi encontrado.\n", codigoBusca);
     }
 
+    system("cls||clear");
     printf("\nPressione Enter para voltar ao menu...");
     getchar(); 
 }

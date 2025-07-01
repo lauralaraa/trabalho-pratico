@@ -17,3 +17,5 @@ pipoca doce
 pipoca doce
 ;1;20;3.000000
 bola;1;2;20.000000
+1;bola;3;30.000000
+1;bola;2;10.000000

@@ -15,15 +15,15 @@ typedef struct Venda {
     float valortotal;
 }Venda;
 
-    void proximoIDvenda() {
+    int proximoIDvenda() {
 
-        FILE *arquivo = fopen("vendas.txt", "r");
-    if (arquivo == NULL) {
+        FILE *arquivo = fopen("docs/vendas.txt", "r");
+    if (arquivo==NULL) {
         return 1;
     }
     Venda v;
     int id = 0;
-    while (fscanf(arquivo, "%d,%49[^,],%d,%f\n",&v.id,&v.vendedor,&v.quantidade,&v.valortotal) == 4) {
+    while (fscanf(arquivo, "%d;%9[^,];%d;%f\n",&v.id,&v.vendedor,&v.quantidade,&v.valortotal) == 4) {
         if (v.id > id) {
             id = v.id;
         }
@@ -51,8 +51,9 @@ typedef struct Venda {
 
     void cadastrarVenda() {
 
-    FILE *arquivo = fopen("vendas.txt", "a");
+    FILE *arquivo = fopen("docs/vendas.txt", "a");
     if (arquivo==NULL) { 
+        system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
     }
@@ -68,6 +69,7 @@ typedef struct Venda {
     fprintf(arquivo, "%s;%s;\n", venda.id,venda.vendedor);
     fclose(arquivo);
 
+    system("cls||clear");
     printf("\nVenda (ID: %d) cadastrado com sucesso!\n", venda.id);
     system("pause");
 
