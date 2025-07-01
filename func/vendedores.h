@@ -1,6 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#ifndef VENDEDORES_H
+#define VENDEDORES_H
 
 typedef struct Vendedor {
     char nome[100];
@@ -24,3 +23,15 @@ Vendedor cadastrovendedor() {
     vendedor.comissao=(vendascom/100)*3;
     return vendedor;
 }
+
+void salvarVendedor(Vendedor v) {
+    FILE *arquivo = fopen("vendedores.txt", "a");
+    if (arquivo != NULL) {
+        fprintf(arquivo, "%s;%d;%d;%.2f\n", v.nome, v.numero, v.salario, v.comissao);
+        fclose(arquivo);
+    } else {
+        printf("Erro ao abrir o arquivo para escrita.\n");
+    }
+}
+
+#endif

@@ -1,6 +1,5 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#ifndef ENDERECO_H
+#define ENDERECO_H
 
 typedef struct Endereco {
     char rua[50];
@@ -34,3 +33,5 @@ Endereco cadastroendereco() {
     }
 
 }
+
+#endif

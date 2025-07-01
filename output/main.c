@@ -1,13 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"cadastrocomprador.h"
-#include"cadastrovendas.h"
-#include"cadastroprodutos.h"
-#include"cadastrovendedores.h"
-#include"salvarvenda.h"
-#include"salvarproduto.h"
-#include"salvarcomprador.h"
-#include"salvarvendedor.h"
+#include"compradores.h"
+#include"vendas.h"
+#include"vendedores.h"
+#include"endereco.h"
+#include"produtos.h"
+
 
 int main()
 {
@@ -22,7 +20,7 @@ int main()
         salvarComprador();
     }else if(verificador2==2){
         cadastrovendedor();
-        salvarVendedor();
+        salvarVendedor()
     }else if(verificador2==3){
         cadastroproduto();
         salvarProduto();
