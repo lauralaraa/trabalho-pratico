@@ -20,7 +20,7 @@ int main()
         salvarComprador();
     }else if(verificador2==2){
         cadastrovendedor();
-        salvarVendedor()
+        salvarVendedor();
     }else if(verificador2==3){
         cadastroproduto();
         salvarProduto();

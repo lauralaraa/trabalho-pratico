@@ -4,7 +4,7 @@
 typedef struct Venda {
     char codigovenda[10];
     char vendedor[10];
-    Produtovenda produtodavenda[1000];
+    
     float valortotal;
 }Venda;
 
