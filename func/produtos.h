@@ -16,7 +16,7 @@ void buscarProduto() {
 
 }
 
-Produto cadastroProduto() {
+Produto cadastrarProduto() {
 
     Produto produto;
 
@@ -71,7 +71,7 @@ void menuProduto() {
 
     switch(select) {
 
-        case 0: Menu(); break;
+        case 0: MainMenu(); break;
 
         case 1: cadastrarProduto(1); break;
         
@@ -79,7 +79,7 @@ void menuProduto() {
 
         case 3: editarProduto(); break;
 
-        case 4: excluirProduto(); break;
+        case 4: deletarProduto(); break;
 
         default: menuProduto(); break;
 

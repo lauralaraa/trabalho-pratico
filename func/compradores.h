@@ -17,7 +17,7 @@ void buscarComprador() {
 
 }
 
-Comprador cadastroComprador () {
+Comprador cadastrarComprador () {
 
     Comprador comprador;
 
@@ -30,7 +30,7 @@ Comprador cadastroComprador () {
     printf("\nInsira o email do comprador: ");
     fgets(comprador.cpf,15,stdin);
     getchar();
-    comprador.endereco=cadastroEndereco();
+    comprador.endereco=cadastrarEndereco();
 
     FILE *arquivo = fopen("compradores.txt", "a");
     if (arquivo != NULL) {
@@ -50,7 +50,7 @@ void deletarComprador() {
     
 }
 
-void consultarCOmprador() {
+void consultarComprador() {
 
 }
 
@@ -72,7 +72,7 @@ void menuComprador() {
 
     switch(select) {
 
-        case 0: Menu(); break;
+        case 0: MainMenu(); break;
 
         case 1: cadastrarComprador(1); break;
         
@@ -80,7 +80,7 @@ void menuComprador() {
 
         case 3: editarComprador(); break;
 
-        case 4: excluirComprador(); break;
+        case 4: deletarComprador(); break;
 
         default: menuComprador(); break;
 

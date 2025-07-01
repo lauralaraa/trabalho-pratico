@@ -6,23 +6,23 @@
 #include"endereco.h"
 #include"produtos.h"
 
-void Menu( void ) {
+    void MainMenu() {
 
-    system(" cls || clear ");
+    system("cls||clear");
 
-    int input;
+    int select;
     
     printf("\nMenu Principal\n\n");
 
     printf("[1] Produtos\n");
     printf("[2] Vendedores\n");
-    printf("[3] Clientes\n");
+    printf("[3] Compradores\n");
     printf("[4] Vendas\n\n");
     printf("[0] Sair\n\n: ");
 
-    scanf("%d", &input);
+    scanf("%d",&select);
 
-    switch ( input ) {
+    switch (select) {
 
         case 0: break;
 
@@ -34,7 +34,7 @@ void Menu( void ) {
 
         case 4: menuVenda(); break;
 
-        default: Menu(); break;
+        default: MainMenu(); break;
         
     }
     
@@ -42,5 +42,5 @@ void Menu( void ) {
 
 int main()
 {
-    Menu();
+    MainMenu();
 }

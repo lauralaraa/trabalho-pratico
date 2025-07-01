@@ -29,7 +29,7 @@ typedef struct Venda {
         
     }
 
-    Venda cadastroVenda() {
+    Venda cadastrarVenda() {
 
     Venda venda;
 
@@ -80,7 +80,7 @@ typedef struct Venda {
 
     switch(select) {
 
-        case 0: Menu(); break;
+        case 0: MainMenu(); break;
 
         case 1: cadastrarComprador(1); break;
         
@@ -88,7 +88,7 @@ typedef struct Venda {
 
         case 3: editarComprador(); break;
 
-        case 4: excluirComprador(); break;
+        case 4: deletarComprador(); break;
 
         case 5: gerarNota(); break;
 

@@ -16,7 +16,7 @@ void buscarVendedor() {
 
 }
 
-Vendedor cadastroVendedor() {
+Vendedor cadastrarVendedor() {
 
     int vendascom,flag;
     Vendedor vendedor;
@@ -69,7 +69,7 @@ void menuVendedor() {
 
     switch(select) {
 
-        case 0: Menu(); break;
+        case 0: MainMenu(); break;
 
         case 1: cadastrarVendedor(1); break;
         
@@ -77,7 +77,7 @@ void menuVendedor() {
 
         case 3: editarVendedor(); break;
 
-        case 4: excluirVendedor(); break;
+        case 4: deletarVendedor(); break;
 
         default: menuVendedor(); break;
 
