@@ -22,15 +22,22 @@ void buscarComprador() {
 void cadastrarComprador () {
 
     Comprador comprador;
+    limparBuffer();
+    system("cls||clear");
 
-    getchar();
     printf("\nInsira o nome do comprador: ");
     fgets(comprador.nome,100,stdin);
-    printf("\nInsira o codigo do produto: ");
+    system("cls||clear");
+
+    printf("\nInsira o cpf do comprador: ");
     fgets(comprador.cpf,15,stdin);
+    system("cls||clear");
+
     printf("\nInsira o email do comprador: ");
     fgets(comprador.email,15,stdin);
-    getchar();
+    system("cls||clear");
+    limparBuffer();
+
     comprador.endereco=cadastrarEndereco();
 
     FILE *arquivo = fopen("compradores.txt", "a");
@@ -85,12 +92,16 @@ void editarComprador() {
                 encontrado = 1;
                 printf("Comprador encontrado! Insira os novos dados:\n");
 
+                limparBuffer();
+
                 printf("Novo nome: ");
                 fgets(comprador.nome, 100, stdin);
+                system("cls||clear");
                 comprador.nome[strcspn(comprador.nome, "\n")] = 0;
 
                 printf("Novo email: ");
                 fgets(comprador.email,50,stdin);
+                system("cls||clear");
                 comprador.email[strcspn(comprador.email, "\n")] = 0;
 
                 comprador.endereco = editarEndereco();
@@ -125,8 +136,7 @@ void editarComprador() {
         printf("\nComprador com o CPF '%s' nao foi encontrado.\n", cpfBusca);
     }
 
-    menuComprador();
-    
+    main();
 
 }
 

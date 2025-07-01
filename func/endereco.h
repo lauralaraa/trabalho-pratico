@@ -17,16 +17,24 @@ typedef struct Endereco {
 Endereco cadastrarEndereco() {
 
     Endereco Endereco;
-    getchar();
+    limparBuffer();
+    system("cls||clear");
+
     printf("\nInsira o nome da sua rua:\n");
     fgets(Endereco.rua,50,stdin);
+    system("cls||clear");
+
     printf("\nInsira o nome do seu bairro:\n");
     fgets(Endereco.bairro,50,stdin);
+    system("cls||clear");
+
     printf("\nInsira a cidade em que voce mora:\n");
     fgets(Endereco.cidade,50,stdin);
+    system("cls||clear");
+
     printf("\nInsira o CEP\n");
     fgets(Endereco.cep,50,stdin);
-    getchar();
+    system("cls||clear");
 
     return Endereco;
     }
@@ -34,19 +42,30 @@ Endereco cadastrarEndereco() {
     Endereco editarEndereco() {
 
         Endereco Endereco;
+        system("cls||clear");
+        limparBuffer();
 
         printf("Insira o novo nome da rua:\n");
         fgets(Endereco.rua,50,stdin);
+        system("cls||clear");
         Endereco.rua[strcspn(Endereco.rua, "\n")] = 0;
+
         printf("Insira o novo nome do bairro:\n");
         fgets(Endereco.bairro,50,stdin);
+        system("cls||clear");
         Endereco.bairro[strcspn(Endereco.bairro, "\n")] = 0;
+
         printf("Insira o novo nome da cidade:\n");
         fgets(Endereco.cidade,50,stdin);
+        system("cls||clear");
         Endereco.cidade[strcspn(Endereco.cidade, "\n")] = 0;
+
         printf("Insira o novo CEP:\n");
         fgets(Endereco.cep,50,stdin);
+        system("cls||clear");
         Endereco.cep[strcspn(Endereco.cep, "\n")] = 0;
+
+        return Endereco;
     }
 
 #endif

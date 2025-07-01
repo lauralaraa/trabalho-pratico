@@ -66,7 +66,7 @@ void cadastrarProduto() {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
 
-    menuProduto();
+    main();
 
 }
 
@@ -101,15 +101,10 @@ void menuProduto() {
     switch(select) {
 
         case 0: main(); break;
-
         case 1: cadastrarProduto(); break;
-        
         case 2: consultarProduto(); break;
-
         case 3: editarProduto(); break;
-
         case 4: deletarProduto(); break;
-
         default: menuProduto(); break;
 
     }
