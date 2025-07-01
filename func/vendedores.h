@@ -5,6 +5,8 @@
 #include<string.h>
 #include<stdlib.h>
 
+#include"limparbuffer.h"
+
 typedef struct Vendedor {
     char nome[100];
     int codigo;
@@ -40,14 +42,16 @@ void cadastrarVendedor() {
 
     int vendascom;
     Vendedor vendedor;
-    getchar();
+    limparBuffer();
     system("cls||clear");
+
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor.nome,100,stdin);
     system("cls||clear");
+
     printf("\nInsira o salario fixo atual do vendedor\n");
     scanf("%f",&vendedor.salario);
-    getchar();
+    limparBuffer();
     system("cls||clear");
 
     vendedor.comissao=(vendascom/100)*3;

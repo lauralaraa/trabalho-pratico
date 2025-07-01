@@ -1,10 +1,12 @@
 #ifndef VENDAS_H
 #define VENDAS_H
-#include"notas.h"
 
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+
+#include"notas.h"
+#include"limparbuffer.h"
 
 typedef struct Venda {
     char codigovenda[10];

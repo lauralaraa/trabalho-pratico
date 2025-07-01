@@ -5,6 +5,8 @@
 #include<string.h>
 #include<stdlib.h>
 
+#include"limparbuffer.h"
+
 typedef struct Endereco {
     char rua[50];
     char bairro[50];

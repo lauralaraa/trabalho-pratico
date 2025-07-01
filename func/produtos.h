@@ -5,9 +5,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include"limparbuffer.h"
+
 typedef struct Produto {
     char nome[100];
-    int codigo;
+    int id;
     int estoque;
     float preco;
 }Produto;
@@ -20,9 +22,9 @@ int proximoIDproduto() {
     }
     Produto p;
     int id = 0;
-    while (fscanf(arquivo, "%d,%49[^,],%d,%f\n", &p.codigo, p.nome, &p.estoque, &p.preco) == 4) {
-        if (p.codigo > id) {
-            id = p.codigo;
+    while (fscanf(arquivo, "%d,%49[^,],%d,%f\n", &p.id, p.nome, &p.estoque, &p.preco) == 4) {
+        if (p.id > id) {
+            id = p.id;
         }
     }
     fclose(arquivo);
@@ -37,28 +39,34 @@ void buscarProduto() {
 void cadastrarProduto() {
 
     Produto produto;
-    getchar();
+    limparBuffer();
     system("cls||clear");
+
     printf("\nInsira o nome do produto\n");
     fgets(produto.nome, 100, stdin);
     system("cls||clear");
+
     printf("\nInira a quantidade em estoque\n");
     scanf("%d",&produto.estoque);
+    limparBuffer();
     system("cls||clear");
+
     printf("\nInsira o preco unitario\n");
     scanf("%f",&produto.preco);
-    getchar();
+    limparBuffer();
     system("cls||clear");
+
+    produto.id=proximoIDproduto();
     
     FILE *arquivo = fopen("produtos.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%d;%d;%f\n", produto.nome, proximoIDproduto(), produto.estoque, produto.preco);
+        fprintf(arquivo, "%s;%d;%d;%f\n", produto.nome, produto.id, produto.estoque, produto.preco);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
 
-    main();
+    menuProduto();
 
 }
 

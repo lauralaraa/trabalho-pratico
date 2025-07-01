@@ -1,10 +1,12 @@
 #ifndef COMPRADORES_H
 #define COMPRADORES_H
-#include"endereco.h"
 
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+
+#include"endereco.h"
+#include"limparbuffer.h"
 
 typedef struct Comprador {
     char nome[100];
