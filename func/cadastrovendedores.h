@@ -15,6 +15,7 @@ Vendedor cadastrovendedor() {
     Vendedor vendedor;
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor.nome,100,stdin);
+    getchar();
     printf("\nInsira o numero do vendedor\n");
     scanf("%d",&vendedor.numero);
     printf("\nInsira o salário fixo atual do vendedor\n");

@@ -6,19 +6,21 @@
 typedef struct Venda {
     char codigovenda[10];
     char vendedor[10];
-    Produtovenda produtodavenda[10000];
+    Produtovenda produtodavenda[1000];
     float valortotal;
 }Venda;
 
 Venda cadastrovenda() {
 
-    int i=1,flag,flag2;
+    int i=0,flag=1,flag2=1;
     while(flag){
     Venda venda;
     printf("\nInsira o codigo da venda\n");
     fgets(venda.codigovenda,10,stdin);
-    printf("\nInsira o codigo da venda\n");
+    getchar();
+    printf("\nInsira o codigo do vendedor\n");
     fgets(venda.vendedor,10,stdin);
+    getchar();
     while(flag2){
     venda.produtodavenda[i]=cadastroprodutovenda();
     i++;

@@ -14,12 +14,15 @@ Produtovenda cadastroprodutovenda() {
     Produtovenda produtovenda;
     printf("\nInsira o nome do produto\n");
     fgets(produtovenda.nome,100,stdin);
+    getchar();
     printf("\nInsira o codigo do produto\n");
-    fgets(produtovenda.codigo,100,stdin);
+    fgets(produtovenda.codigo,20,stdin);
+    getchar();
     printf("\nInsira o quantidade vendida\n");
     scanf("%d",&produtovenda.quantidade);
     printf("\nInsira o preço unitário\n");
-    scanf("%.2f",&produtovenda.precounidade);
+    scanf("%f",&produtovenda.precounidade);
     produtovenda.precototal=produtovenda.quantidade*produtovenda.precounidade;
+
     return produtovenda;
 }

@@ -13,8 +13,10 @@ Produto cadastroproduto() {
     Produto produto;
     printf("\nInsira o nome do produto\n");
     fgets(produto.nome,100,stdin);
+    getchar();
     printf("\nInsira o codigo do produto\n");
     fgets(produto.codigo,20,stdin);
+    getchar();
     printf("\nInira a quantidade em estoque\n");
     scanf("%d",&produto.estoque);
     printf("\nInsira o preço unitário\n");
