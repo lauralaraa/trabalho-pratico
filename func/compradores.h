@@ -47,7 +47,90 @@ void cadastrarComprador () {
 
 void editarComprador() {
 
+    char cpfBusca[15];
+    int encontrado = 0;
+
+    getchar();
+
+    printf("Digite o CPF do comprador que deseja editar:\n");
+    fgets(cpfBusca, 15, stdin);
+
+    cpfBusca[strcspn(cpfBusca, "\n")] = 0;
+
+    FILE *arquivoOriginal = fopen("compradores.txt", "r");
+    FILE *arquivoTemporario = fopen("temp.txt", "w");
+
+    if(arquivoOriginal == NULL || arquivoTemporario == NULL) {
+
+        printf("Erro ao abrir os arquivos!\n");
+        printf("Pressione ENTER para continuar...");
+        getchar();
+        return;
+    }
+
+    Comprador comprador;
+    char linha[256];
+
+    while (fgets(linha, sizeof(linha), arquivoOriginal) != NULL) {
+        sscanf(linha, "%[^;];%[^;];%[^;];%[^;];%[^,],%[^,],%[^\n]",
+        comprador.nome,
+               comprador.cpf,
+               comprador.email,
+               comprador.endereco.bairro,
+               comprador.endereco.rua,
+               comprador.endereco.cidade,
+               comprador.endereco.cep);
+
+               if(strcmp(comprador.cpf, cpfBusca) == 0) {
+                encontrado = 1;
+                printf("Comprador encontrado! Insira os novos dados:\n");
+
+                printf("Novo nome: ");
+                fgets(comprador.nome, 100, stdin);
+                comprador.nome[strcspn(comprador.nome, "\n")] = 0;
+
+                printf("Novo email: ");
+                fgets(comprador.email,50,stdin);
+                comprador.email[strcspn(comprador.email, "\n")] = 0;
+
+                comprador.endereco = editarEndereco();
+
+                fprintf(arquivoTemporario, "%s;%s;%s;%s;%s,%s,%s\n",
+                comprador.nome,
+                    comprador.cpf, // Mantém o CPF original
+                    comprador.email,
+                    comprador.endereco.bairro,
+                    comprador.endereco.rua,
+                    comprador.endereco.cidade,
+                    comprador.endereco.cep);
+
+                    printf("\nComprador atualizado com sucesso!\n");
+
+                        } else{
+
+                fprintf(arquivoTemporario, "%s", linha);
+
+               }
+
+    }
+
+    fclose(arquivoOriginal);
+    fclose(arquivoTemporario);
+
+    if(encontrado) {
+        remove("compradores.txt");
+        rename("temp.txt", "compradores.txt");
+    } else{
+        remove("temp.txt");
+        printf("\nComprador com o CPF '%s' nao foi encontrado.\n", cpfBusca);
+    }
+
+    menuComprador();
+    
+
 }
+
+
 
 void deletarComprador() {
     
