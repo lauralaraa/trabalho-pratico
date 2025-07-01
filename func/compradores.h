@@ -9,30 +9,45 @@ typedef struct Comprador {
     Endereco endereco;
 }Comprador;
 
+void proximoIDcomprador() {
 
-Comprador cadastrocomprador () {
-    Comprador infoComprador;
-    Endereco endereco;
+}
+
+void buscarComprador() {
+
+}
+
+Comprador cadastroComprador () {
+
+    Comprador comprador;
+
     printf("\nInsira o nome do comprador: ");
-    fgets(infoComprador.nome,100,stdin);
+    fgets(comprador.nome,100,stdin);
     getchar();
     printf("\nInsira o codigo do produto: ");
-    fgets(infoComprador.cpf,15,stdin);
+    fgets(comprador.cpf,15,stdin);
     getchar();
     printf("\nInsira o email do comprador: ");
-    fgets(infoComprador.cpf,15,stdin);
+    fgets(comprador.cpf,15,stdin);
     getchar();
-    infoComprador.endereco=cadastroendereco();
-    
-};
+    comprador.endereco=cadastroEndereco();
 
-void salvarProduto(Comprador c) {
     FILE *arquivo = fopen("compradores.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%s;%s;%s;%s,%s,%s\n", c.nome, c.cpf, c.email, c.endereco.bairro, c.endereco.rua, c.endereco.cidade, c.endereco.cep);
+        fprintf(arquivo, "%s;%s;%s;%s;%s,%s,%s\n", comprador.nome, comprador.cpf, comprador.email, comprador.endereco.bairro, comprador.endereco.rua, comprador.endereco.cidade, comprador.endereco.cep);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
+    
 }
+
+void editarComprador() {
+
+}
+
+void deletarComprador() {
+    
+}
+
 #endif

@@ -8,8 +8,18 @@ typedef struct Produto {
     float preco;
 }Produto;
 
-Produto cadastroproduto() {
+void proximoIDproduto() {
+
+}
+
+void buscarProduto() {
+
+}
+
+Produto cadastroProduto() {
+
     Produto produto;
+
     printf("\nInsira o nome do produto\n");
     fgets(produto.nome,100,stdin);
     getchar();
@@ -21,16 +31,22 @@ Produto cadastroproduto() {
     printf("\nInsira o preço unitário\n");
     scanf("%.2f",&produto.preco);
     
-}
-
-void salvarProduto(Produto p) {
     FILE *arquivo = fopen("produtos.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%s;%d;%.2f\n", p.nome, p.codigo, p.estoque, p.preco);
+        fprintf(arquivo, "%s;%s;%d;%.2f\n", produto.nome, produto.codigo, produto.estoque, produto.preco);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
+
+}
+
+void editarProduto() {
+
+}
+
+void deletarProduto() {
+
 }
 
 #endif

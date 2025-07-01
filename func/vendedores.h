@@ -8,7 +8,15 @@ typedef struct Vendedor {
     float comissao;
 }Vendedor;
 
-Vendedor cadastrovendedor() {
+void proximoIDvendedor() {
+
+}
+
+void buscarVendedor() {
+
+}
+
+Vendedor cadastroVendedor() {
 
     int vendascom,flag;
     Vendedor vendedor;
@@ -21,17 +29,22 @@ Vendedor cadastrovendedor() {
     scanf("%.2f",&vendedor.salario);
     vendascom=vendascom;
     vendedor.comissao=(vendascom/100)*3;
-    return vendedor;
-}
 
-void salvarVendedor(Vendedor v) {
-    FILE *arquivo = fopen("vendedores.txt", "a");
+       FILE *arquivo = fopen("vendedores.txt", "a");
     if (arquivo != NULL) {
-        fprintf(arquivo, "%s;%d;%d;%.2f\n", v.nome, v.numero, v.salario, v.comissao);
+        fprintf(arquivo, "%s;%d;%d;%.2f\n", vendedor.nome, vendedor.numero, vendedor.salario, vendedor.comissao);
         fclose(arquivo);
     } else {
         printf("Erro ao abrir o arquivo para escrita.\n");
     }
+}
+
+void editarVendedor() {
+ 
+}
+
+void deletarVendedor() {
+
 }
 
 #endif
