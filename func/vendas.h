@@ -121,20 +121,11 @@ void editarVenda() {
         if (venda.id == idBusca) {
             encontrado = 1;
             system("cls||clear");
-<<<<<<< HEAD
-            printf("\n--- Venda Encontrada (%s) ---\n", venda.id);
-            printf("Insira os novos dados:\n\n");
-
-            printf("Novo codigo do vendedor:\n");
-            fgets(venda.vendedor, 10, stdin);
-            system("cls||clear");
-=======
             printf("\n--- Venda Encontrada (ID: %d) ---\n", venda.id);
             printf("Insira os novos dados:\n\n");
 
             printf("Novo nome do vendedor: ");
             fgets(venda.vendedor, 50, stdin);
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
             venda.vendedor[strcspn(venda.vendedor, "\n")] = 0;
 
             printf("Nova quantidade de itens: ");
@@ -146,11 +137,6 @@ void editarVenda() {
             scanf("%f", &venda.valortotal);
             limparBuffer();
 
-<<<<<<< HEAD
-            fprintf(arquivoTemp, "%s;%s;%d;%f\n", venda.id, venda.vendedor, venda.quantidade, venda.valortotal);
-            system("cls||clear");
-=======
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
             printf("\n>> Venda atualizada com sucesso! <<\n");
         }
         
@@ -165,20 +151,10 @@ void editarVenda() {
         rename("vendas_temp.txt", "vendas.txt");
     } else {
         remove("vendas_temp.txt");
-<<<<<<< HEAD
-        system("cls||clear");
-        printf("\nERRO: Venda com o codigo '%s' nao foi encontrada.\n", codigoBusca);
-    }
-
-    printf("\nPressione ENTER para voltar ao menu...");
-    limparBuffer();
-
-=======
         printf("\nERRO: Venda com o ID '%d' nao foi encontrada.\n", idBusca);
     }
 
     system("pause");
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
 }
 
 void deletarVenda()
@@ -191,15 +167,9 @@ void deletarVenda()
 
     FILE *arquivo = fopen("vendas.txt", "r");
     FILE *temp = fopen("temp.txt", "w");
-<<<<<<< HEAD
-    
-    if(arquivo == NULL || temp == NULL) {
-        system("cls||clear");
-=======
 
     if (arquivo == NULL || temp == NULL)
     {
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
         printf("Erro ao abrir arquivos!\n");
         return;
     }
@@ -263,10 +233,6 @@ void consultarVenda()
         return;
     }
 
-<<<<<<< HEAD
-    void menuVenda() {
-        
-=======
     while (fscanf(arquivo, "%d;%49[^;];%d;%f\n", &venda.id, venda.vendedor, &venda.quantidade, &venda.valortotal) == 4) {
         if (venda.id == idBusca) {
             encontrado = 1;
@@ -291,7 +257,6 @@ void consultarVenda()
 void menuVenda()
 {
     system("cls||clear");
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
 
     int select;
     int flag=1;
@@ -309,17 +274,8 @@ void menuVenda()
 
     scanf("%d", &select);
 
-<<<<<<< HEAD
-        case 0: flag=0; break;
-        case 1: cadastrarVenda(); break;
-        case 2: consultarVenda(); break;
-        case 3: editarVenda(); break;
-        case 4: deletarVenda(); break;
-        default: flag=1; break;
-=======
     switch (select)
     {
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
 
     case 0:
         return;
@@ -340,13 +296,8 @@ void menuVenda()
         menuComprador();
         break;
     }
-<<<<<<< HEAD
-    }
-    }
-=======
 
     menuVenda();
 }
->>>>>>> 1adff5695ef755f1502b14702a9a4a1b926945b4
 
 #endif
