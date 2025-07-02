@@ -26,7 +26,7 @@ int proximoIDvenda()
     }
     Venda v;
     int idMaximo = 0;
-    while (fscanf(arquivo, "%d;%49[^;];%d;%f\n", &v.id, &v.vendedor, &v.quantidade, &v.valortotal) == 4)
+    while (fscanf(arquivo, "%d;%49[^;];%d;%f\n", &v.id, v.vendedor, &v.quantidade, &v.valortotal) == 4)
     {
         if (v.id > idMaximo)
         {

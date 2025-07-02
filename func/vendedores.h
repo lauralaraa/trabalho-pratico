@@ -22,7 +22,7 @@ int proximoIDvendedor() {
     }
     Vendedor v;
     int idMaximo = 0;
-    while (fscanf(arquivo, "%99[^;];%d;%f;%f\n",&v.nome,&v.id,&v.salario,&v.comissao) == 4) {
+    while (fscanf(arquivo, "%99[^;];%d;%f;%f\n",v.nome,&v.id,&v.salario,&v.comissao) == 4) {
         if (v.id > idMaximo) {
             idMaximo = v.id;
         }

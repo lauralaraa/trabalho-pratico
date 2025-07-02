@@ -37,18 +37,17 @@ void cadastrarComprador () {
     comprador.nome[strcspn(comprador.nome, "\n")] = 0;
     system("cls||clear");
 
+
     printf("\nInsira o cpf do comprador: ");
     fgets(comprador.cpf,15,stdin);
     comprador.cpf[strcspn(comprador.cpf, "\n")] = 0;
     system("cls||clear");
 
-    limparBuffer();
 
     printf("\nInsira o email do comprador: ");
     fgets(comprador.email,15,stdin);
     comprador.email[strcspn(comprador.email, "\n")] = 0;
     system("cls||clear");
-    
 
     comprador.endereco = cadastrarEndereco();
 
@@ -103,7 +102,6 @@ void editarComprador() {
             system("cls||clear");
             printf("--- Comprador Encontrado: %s ---\n", comprador.nome);
             printf("Insira os novos dados (deixe em branco e pressione Enter para manter o atual):\n\n");
-
             
             char novoNome[100];
             printf("Novo nome (Atual: %s): ", comprador.nome);
@@ -113,7 +111,7 @@ void editarComprador() {
                 strcpy(comprador.nome, novoNome);
             }
 
-            
+
             char novoEmail[50];
             printf("Novo email (Atual: %s): ", comprador.email);
             fgets(novoEmail, 50, stdin);
@@ -121,11 +119,9 @@ void editarComprador() {
             if (strlen(novoEmail) > 0) {
                 strcpy(comprador.email, novoEmail);
             }
-            
-            
-            printf("\nDados de endereco mantidos. (Implementar edicao de endereco se necessario)\n");
 
-
+            
+            comprador.endereco=editarEndereco();
             
             fprintf(arquivoTemporario, "%s;%s;%s;%s;%s;%s;%s\n",
                     comprador.nome,
