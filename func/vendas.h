@@ -77,7 +77,72 @@ typedef struct Venda {
 
     void editarVenda() {
 
+        char codigoBusca[10];
+        int encontrado = 0;
+        Venda venda;
+
+        system("cls||clear");
+        printf("\n---Editar Venda---\n");
+        limparBuffer();
+
+        printf("Digite o codigo de venda que deseja editar:\n");
+        fgets(codigoBusca,10,stdin);
+        codigoBusca[strcspn(codigoBusca, "\n")] = 0;
+
+        FILE *arquivoOriginal = fopen("vendas.txt", "r");
+        FILE *arquivoTemp = fopen("vendas_temp.txt", "w");
+
+        if(arquivoOriginal == NULL || arquivoTemp == NULL) {
+            printf("\nErro ao abrir os arquivos! Verifique se o arquivo 'vendas.txt' existe.\n");
+        printf("Pressione Enter para continuar...");
+        getchar();
+        return;
     }
+
+    while(fscanf(arquivoOriginal, "%[^;];%[^;];%d;%f\n",
+     venda.id, venda.vendedor, &venda.quantidade, &venda.valortotal) == 4) {
+
+        if (strcmp(venda.id, codigoBusca) == 0) {
+            encontrado = 1;
+            printf("\n--- Venda Encontrada (%s) ---\n", venda.id);
+            printf("Insira os novos dados:\n\n");
+
+            printf("Novo codigo do vendedor:\n");
+            fgets(venda.vendedor, 10, stdin);
+            venda.vendedor[strcspn(venda.vendedor, "\n")] = 0;
+
+            printf("Nova quantidade de itens: ");
+            scanf("%d", &venda.quantidade);
+
+            printf("Novo valor total da venda: ");
+            scanf("%f", &venda.valortotal);
+            limparBuffer();
+
+            fprintf(arquivoTemp, "%s;%s;%d;%f\n", venda.id, venda.vendedor, venda.quantidade, venda.valortotal);
+            printf("\n>> Venda atualizada com sucesso! <<\n");
+        } else {
+            fprintf(arquivoTemp, "%s;%s;%d;%f\n", venda.id, venda.vendedor, venda.quantidade, venda.valortotal);
+        }
+
+    }
+
+    fclose(arquivoOriginal);
+    fclose(arquivoTemp);
+
+    if(encontrado) {
+        remove("vendas.txt");
+        rename("vendas_temp.txt", "vendas.txt");
+    } else{
+        remove("vendas_temp.txt");
+        printf("\nERRO: Venda com o codigo '%s' nao foi encontrada.\n", codigoBusca);
+    }
+
+    printf("\nPressione ENTER para voltar ao menu...");
+    getchar();
+
+}
+
+    
 
     void deletarVenda() {
     int id;
