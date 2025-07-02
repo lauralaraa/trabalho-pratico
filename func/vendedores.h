@@ -63,11 +63,20 @@ void cadastrarVendedor() {
     vendedor.id = proximoIDvendedor();
     vendedor.comissao = 0.0;
 
+    if(vendedor.salario<0||vendedor.comissao<0){
+
+    printf("Valor do salario invalido\n");
+    system("pause");
+    fclose(arquivo);
+
+    }else {
+
     fprintf(arquivo, "%s;%d;%.2f;%.2f\n", vendedor.nome, vendedor.id, vendedor.salario, vendedor.comissao);
     fclose(arquivo);
 
     printf("\nVendedor '%s' (ID: %d) cadastrado com sucesso!\n", vendedor.nome, vendedor.id);
     system("pause");
+    }
 }
 
 void editarVendedor() {

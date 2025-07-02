@@ -58,13 +58,21 @@ void cadastrarProduto() {
     system("cls||clear");
 
     produto.id=proximoIDproduto();
-    
+
+    if(produto.estoque<0||produto.preco<0){
+
+        printf("Quantidade em estoque/valor do preco invalido(s)\n");
+        system("pause");
+        fclose(arquivo);
+
+        }else{
     fprintf(arquivo, "%d;%s;%d;%.2f\n", produto.id, produto.nome, produto.estoque, produto.preco);
     fflush(arquivo);
     fclose(arquivo);
 
     printf("\nProduto '%s' (ID: %d) cadastrado com sucesso!\n", produto.nome, produto.id);
     system("pause");
+        }
 }
 
 void editarProduto() {
