@@ -143,8 +143,8 @@ void editarVendedor() {
 void deletarVendedor() {
     int id;
     
-    
-    printf("Digite o ID do vendedor que deseja remover: ");  //<- Pega o id do vendedor
+    system("cls||clear");
+    printf("Digite o ID do vendedor que deseja remover: ");
     scanf("%d", &id);
     limparBuffer();
     
@@ -156,16 +156,14 @@ void deletarVendedor() {
         return;
     }
     
-    char linha[200];
+    char linha[256];
     int encontrado = 0;
     
-    while(fgets(linha, 200, arquivo) != NULL) {
-        
+    while(fgets(linha, sizeof(linha), arquivo) != NULL) {
         int idAtual;
         sscanf(linha, "%*[^;];%d", &idAtual);
         
-        
-        if(idAtual != id) {                 //<- Se não for o vendedor a ser deletado, copia para o novo arquivo
+        if(idAtual != id) {
             fprintf(temp, "%s", linha);
         } else {
             encontrado = 1;
@@ -175,19 +173,18 @@ void deletarVendedor() {
     fclose(arquivo);
     fclose(temp);
     
+    system("cls||clear"); 
     if(encontrado) {
         remove("vendedores.txt");
         rename("temp.txt", "vendedores.txt");
-        system("cls||clear");
         printf("Vendedor removido com sucesso!\n");
     } else {
         remove("temp.txt");
-        system("cls||clear");
-        printf("Vendedor não encontrado!\n");
+        printf("Vendedor nao encontrado!\n");
     }
     
-    system("cls||clear");
-    printf("Pressione Enter para continuar...");
+    
+    printf("\nPressione Enter para continuar...");
     getchar();
 }
 
