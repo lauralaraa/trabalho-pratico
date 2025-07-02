@@ -254,8 +254,7 @@ void consultarVenda()
     system("pause");
 }
 
-void menuVenda()
-{
+void menuVenda() {
     system("cls||clear");
 
     int select;
@@ -277,27 +276,17 @@ void menuVenda()
     switch (select)
     {
 
-    case 0:
-        return;
-        break;
-    case 1:
-        cadastrarVenda();
-        break;
-    case 2:
-        consultarVenda();
-        break;
-    case 3:
-        editarVenda();
-        break;
-    case 4:
-        deletarVenda();
-        break;
-    default:
-        menuComprador();
-        break;
+    case 0: flag=0; break;
+    case 1: cadastrarVenda(); break;
+    case 2: consultarVenda(); break;
+    case 3: editarVenda(); break;
+    case 4: deletarVenda(); break;
+    default: flag=1; break;
+
     }
 
     menuVenda();
+}
 }
 
 #endif
