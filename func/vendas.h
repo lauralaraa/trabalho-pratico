@@ -72,7 +72,6 @@ void atualizarComissaoVendedor(int idVendedor, float valorVenda) {
     }
     fclose(f_orig);
     fclose(f_temp);
-    remove("vendedores.txt");
     rename("temp.txt", "vendedores.txt");
 }
 
