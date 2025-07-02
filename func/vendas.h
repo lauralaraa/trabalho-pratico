@@ -104,21 +104,26 @@ typedef struct Venda {
 
         if (strcmp(venda.id, codigoBusca) == 0) {
             encontrado = 1;
+            system("cls||clear");
             printf("\n--- Venda Encontrada (%s) ---\n", venda.id);
             printf("Insira os novos dados:\n\n");
 
             printf("Novo codigo do vendedor:\n");
             fgets(venda.vendedor, 10, stdin);
+            system("cls||clear");
             venda.vendedor[strcspn(venda.vendedor, "\n")] = 0;
 
             printf("Nova quantidade de itens: ");
             scanf("%d", &venda.quantidade);
+            system("cls||clear");
+            limparBuffer();
 
             printf("Novo valor total da venda: ");
             scanf("%f", &venda.valortotal);
             limparBuffer();
 
             fprintf(arquivoTemp, "%s;%s;%d;%f\n", venda.id, venda.vendedor, venda.quantidade, venda.valortotal);
+            system("cls||clear");
             printf("\n>> Venda atualizada com sucesso! <<\n");
         } else {
             fprintf(arquivoTemp, "%s;%s;%d;%f\n", venda.id, venda.vendedor, venda.quantidade, venda.valortotal);
@@ -134,11 +139,12 @@ typedef struct Venda {
         rename("vendas_temp.txt", "vendas.txt");
     } else{
         remove("vendas_temp.txt");
+        system("cls||clear");
         printf("\nERRO: Venda com o codigo '%s' nao foi encontrada.\n", codigoBusca);
     }
 
     printf("\nPressione ENTER para voltar ao menu...");
-    getchar();
+    limparBuffer();
 
 }
 
@@ -156,6 +162,7 @@ typedef struct Venda {
     FILE *temp = fopen("temp.txt", "w");
     
     if(arquivo == NULL || temp == NULL) {
+        system("cls||clear");
         printf("Erro ao abrir arquivos!\n");
         return;
     }
@@ -180,9 +187,11 @@ typedef struct Venda {
     if(encontrado) {
         remove("vendas.txt");
         rename("temp.txt", "vendas.txt");
+        system("cls||clear");
         printf("Venda removida com sucesso!\n");
     } else {
         remove("temp.txt");
+        system("cls||clear");
         printf("Venda não encontrada!\n");
     }
     
@@ -195,10 +204,13 @@ typedef struct Venda {
     }
 
     void menuVenda() {
-        system("cls||clear");
+        
 
     int select;
+    int flag=1;
 
+    while(flag==1) {
+    system("cls||clear");
     printf("\nVendas\n\n");
 
     printf("[1] Cadastrar\n");
@@ -212,13 +224,14 @@ typedef struct Venda {
 
     switch(select) {
 
-        case 0: return; break;
+        case 0: flag=0; break;
         case 1: cadastrarVenda(); break;
         case 2: consultarVenda(); break;
         case 3: editarVenda(); break;
         case 4: deletarVenda(); break;
-        default: menuComprador(); break;
+        default: flag=1; break;
 
+    }
     }
     }
 

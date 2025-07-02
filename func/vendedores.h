@@ -177,12 +177,15 @@ void deletarVendedor() {
     if(encontrado) {
         remove("vendedores.txt");
         rename("temp.txt", "vendedores.txt");
+        system("cls||clear");
         printf("Vendedor removido com sucesso!\n");
     } else {
         remove("temp.txt");
+        system("cls||clear");
         printf("Vendedor não encontrado!\n");
     }
     
+    system("cls||clear");
     printf("Pressione Enter para continuar...");
     getchar();
 }
@@ -193,10 +196,11 @@ void consultarVendedor() {
 
 void menuVendedor() {
 
-    system("cls||clear");
-
+    int flag=1;
     int select;
 
+    while(flag==1){
+    system("cls||clear");
     printf("\nVendedores\n\n");
 
     printf("[1] Cadastrar\n");
@@ -209,12 +213,14 @@ void menuVendedor() {
 
     switch(select) {
 
-        case 0: return; break;
+        case 0: flag=0; break;
         case 1: cadastrarVendedor(); break;
         case 2: consultarVendedor(); break;
         case 3: editarVendedor(); break;
         case 4: deletarVendedor(); break;
-        default: menuVendedor(); break;
+        default: flag=1; break;
+
+    }
 
     }
 
