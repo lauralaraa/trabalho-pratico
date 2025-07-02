@@ -48,9 +48,9 @@ void cadastrarComprador () {
     fgets(comprador.email,15,stdin);
     comprador.email[strcspn(comprador.email, "\n")] = 0;
     system("cls||clear");
-    limparBuffer();
+    
 
-    comprador.endereco=cadastrarEndereco();
+    comprador.endereco = cadastrarEndereco();
 
         fprintf(arquivo, "%s;%s;%s;%s;%s;%s;%s\n", comprador.nome, comprador.cpf, comprador.email, comprador.endereco.bairro, comprador.endereco.rua, comprador.endereco.cidade, comprador.endereco.cep);
         fclose(arquivo);
