@@ -268,7 +268,7 @@ void menuComprador() {
     int select;
     int flag=1;
 
-    while(flag=1){
+    while(flag==1){
     system("cls||clear");
     printf("\nCompradores\n\n");
 
@@ -290,7 +290,7 @@ void menuComprador() {
         default: flag=1; break;
 
     }
-}
+  }
 }
 
 #endif

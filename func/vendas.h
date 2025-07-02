@@ -284,9 +284,7 @@ void menuVenda() {
     default: flag=1; break;
 
     }
-
-    menuVenda();
-}
+  }
 }
 
 #endif
