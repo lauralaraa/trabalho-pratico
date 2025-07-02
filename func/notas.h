@@ -9,8 +9,8 @@
 
 float calcularFrete(float valorVenda) {
     if (valorVenda <= 100.0) return 30.0;
-    if (valorVenda <= 300.0) return 20.0;
-    return 0.0;
+    if ( valorVenda < 100.0 && valorVenda <= 300.0) return 20.0;
+    if (valorVenda >300.0) return 0.0;
 }
 
 void emitirNotaFiscal() {
