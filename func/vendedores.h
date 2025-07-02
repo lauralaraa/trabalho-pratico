@@ -243,9 +243,11 @@ void consultarVendedor() {
 
 void menuVendedor() {
 
+   int flag=1;
    int select;
     
-    while(1) {
+    while(flag==1) {
+
         system("cls||clear");
         printf("\n--- Menu Vendedores ---\n\n");
         printf("[1] Cadastrar\n");
@@ -258,16 +260,13 @@ void menuVendedor() {
         scanf("%d",&select);
 
         switch(select) {
-            case 0: return; 
+
+            case 0: flag=0; return; 
             case 1: cadastrarVendedor(); break;
             case 2: consultarVendedor(); break;
             case 3: editarVendedor(); break;
             case 4: deletarVendedor(); break;
-            default: 
-                printf("Opcao invalida! Pressione Enter para tentar novamente.");
-                limparBuffer();
-                getchar();
-                break;
+            default: flag=1; break;
         }
     }
 
