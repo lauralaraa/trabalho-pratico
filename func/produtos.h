@@ -182,7 +182,52 @@ void editarProduto() {
 
 
 void consultarProduto() {
-    // implementar depois
+    
+    int idBusca;
+    int encontrado = 0;
+    Produto produto;
+
+    system("cls||clear");
+
+    printf("\n--- Consultar Produto ---\n");
+    printf("Digite o ID do produto que deseja consultar:\n");
+    scanf("%d",&idBusca);
+    limparBuffer();
+
+    FILE *arquivo = fopen("produtos.txt", "r");
+
+    if(arquivo == NULL) {
+        system("cls||clear");
+        printf("Erro ao abrir o arquivo! Nao ha produtos cadastrados.\n");
+        system("pause");
+        return;
+    }
+
+    while (fscanf(arquivo, "%d;%99[^;];%d;%f\n", &produto.id, produto.nome, &produto.estoque, &produto.preco) == 4) {
+
+        if(produto.id == idBusca) {
+            encontrado = 1;
+
+            system("cls||clear");
+            printf("--- Produto Encontrado ---\n\n");
+            printf("ID: %d\n", produto.id);
+            printf("Nome: %s\n", produto.nome);
+            printf("Quantidade em Estoque: %d\n", produto.estoque);
+            printf("Preco: R$ %.2f\n\n", produto.preco);
+            break;
+        }
+
+}
+
+    fclose(arquivo);
+
+    if(!encontrado) {
+        system("cls||clear");
+        printf("\nProduto com o ID '%d' nao foi encontrado.\n\n", idBusca);
+    }
+
+    sytem("pause");
+
 }
 
 void menuProduto() {
