@@ -130,6 +130,8 @@ void editarVenda() {
 
             printf("Nova quantidade de itens: ");
             scanf("%d", &venda.quantidade);
+            system("cls||clear");
+            limparBuffer();
 
             printf("Novo valor total da venda: ");
             scanf("%f", &venda.valortotal);
@@ -197,11 +199,13 @@ void deletarVenda()
     {
         remove("vendas.txt");
         rename("temp.txt", "vendas.txt");
+        system("cls||clear");
         printf("Venda removida com sucesso!\n");
     }
     else
     {
         remove("temp.txt");
+        system("cls||clear");
         printf("Venda não encontrada!\n");
     }
 
@@ -255,7 +259,10 @@ void menuVenda()
     system("cls||clear");
 
     int select;
+    int flag=1;
 
+    while(flag==1) {
+    system("cls||clear");
     printf("\nVendas\n\n");
 
     printf("[1] Cadastrar\n");

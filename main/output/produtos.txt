@@ -1,1 +1,2 @@
-1;pipoca doce;40;50.00
+1;produto;1;1.00
+2;bola;1;1.00

@@ -124,6 +124,7 @@ void editarComprador() {
                     comprador.endereco.cidade,
                     comprador.endereco.cep);
 
+                    system("cls||clear");
                     printf("\nComprador atualizado com sucesso!\n");
 
                         } else{
@@ -142,6 +143,7 @@ void editarComprador() {
         rename("temp.txt", "compradores.txt");
     } else{
         remove("temp.txt");
+        system("cls||clear");
         printf("\nComprador com o CPF '%s' nao foi encontrado.\n", cpfBusca);
     }
 
@@ -184,9 +186,11 @@ void deletarComprador() {
     if(encontrado) {
         remove("compradores.txt");
         rename("temp.txt", "compradores.txt");
+        system("cls||clear");
         printf("Comprador removido com sucesso!\n");
     } else {
         remove("temp.txt");
+        system("cls||clear");
         printf("Comprador não encontrado!\n");
     }
     
@@ -261,10 +265,11 @@ void consultarComprador() {
 
 void menuComprador() {
 
-    system("cls||clear");
-
     int select;
+    int flag=1;
 
+    while(flag=1){
+    system("cls||clear");
     printf("\nCompradores\n\n");
 
     printf("[1] Cadastrar\n");
@@ -277,19 +282,15 @@ void menuComprador() {
 
     switch(select) {
 
-        case 0: return; break;
-
+        case 0: flag=0; break;
         case 1: cadastrarComprador(); break;
-        
         case 2: consultarComprador(); break;
-
         case 3: editarComprador(); break;
-
         case 4: deletarComprador(); break;
-
-        default: menuComprador(); break;
+        default: flag=1; break;
 
     }
+}
 }
 
 #endif

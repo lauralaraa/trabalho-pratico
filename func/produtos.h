@@ -135,8 +135,10 @@ void editarProduto() {
 }
 
   void deletarProduto() {
+
     int id;
     
+    system("cls||clear");
     printf("Digite o ID do produto que deseja remover: ");
     scanf("%d", &id);
     limparBuffer();
@@ -170,9 +172,11 @@ void editarProduto() {
     if(encontrado) {
         remove("produtos.txt");
         rename("temp.txt", "produtos.txt");
+        system("cls||clear");
         printf("Produto removido com sucesso!\n");
     } else {
         remove("temp.txt");
+        system("cls||clear");
         printf("Produto não encontrado!\n");
     }
     
@@ -231,10 +235,12 @@ void consultarProduto() {
 }
 
 void menuProduto() {
-    system("cls||clear");
 
+    int flag=1;
     int select;
 
+    while(flag=1){
+    system("cls||clear");
     printf("\nProdutos\n\n");
     printf("[1] Cadastrar\n");
     printf("[2] Consultar\n");
@@ -245,13 +251,14 @@ void menuProduto() {
     scanf("%d", &select);
 
     switch (select) {
-        case 0: return; break;
+        case 0: flag=0; break;
         case 1: cadastrarProduto(); break;
         case 2: consultarProduto(); break;
         case 3: editarProduto(); break;
         case 4: deletarProduto(); break;
-        default: menuProduto(); break;
+        default: flag=1; break;
     }
+}
 }
 
 #endif

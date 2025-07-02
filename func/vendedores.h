@@ -178,12 +178,15 @@ void deletarVendedor() {
     if(encontrado) {
         remove("vendedores.txt");
         rename("temp.txt", "vendedores.txt");
+        system("cls||clear");
         printf("Vendedor removido com sucesso!\n");
     } else {
         remove("temp.txt");
+        system("cls||clear");
         printf("Vendedor não encontrado!\n");
     }
     
+    system("cls||clear");
     printf("Pressione Enter para continuar...");
     getchar();
 }
