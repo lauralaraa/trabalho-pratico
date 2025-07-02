@@ -141,49 +141,55 @@ void editarVendedor() {
 
 
 void deletarVendedor() {
-    int id;
-    
+    int idParaDeletar;
+    int encontrado = 0;
+    Vendedor vendedor; 
+
     system("cls||clear");
     printf("Digite o ID do vendedor que deseja remover: ");
-    scanf("%d", &id);
-    limparBuffer();
+    scanf("%d", &idParaDeletar);
+    limparBuffer(); 
+
+    FILE *arquivoOriginal = fopen("vendedores.txt", "r");
+    FILE *arquivoTemporario = fopen("temp.txt", "w");
+
     
-    FILE *arquivo = fopen("vendedores.txt", "r");
-    FILE *temp = fopen("temp.txt", "w");
-    
-    if(arquivo == NULL || temp == NULL) {
-        printf("Erro ao abrir arquivos!\n");
+    if (arquivoOriginal == NULL || arquivoTemporario == NULL) {
+        printf("Erro ao abrir os arquivos!\n");
+        system("pause");
         return;
     }
+
     
-    char linha[256];
-    int encontrado = 0;
-    
-    while(fgets(linha, sizeof(linha), arquivo) != NULL) {
-        int idAtual;
-        sscanf(linha, "%*[^;];%d", &idAtual);
+    while (fscanf(arquivoOriginal, "%99[^;];%d;%f;%f\n", vendedor.nome, &vendedor.id, &vendedor.salario, &vendedor.comissao) == 4) {
         
-        if(idAtual != id) {
-            fprintf(temp, "%s", linha);
+        
+        if (vendedor.id != idParaDeletar) {
+            
+            fprintf(arquivoTemporario, "%s;%d;%.2f;%.2f\n", vendedor.nome, vendedor.id, vendedor.salario, vendedor.comissao);
         } else {
+            
             encontrado = 1;
         }
     }
-    
-    fclose(arquivo);
-    fclose(temp);
-    
-    system("cls||clear"); 
-    if(encontrado) {
+
+   
+    fclose(arquivoOriginal);
+    fclose(arquivoTemporario);
+
+    system("cls||clear");  
+
+    if (encontrado) {
+        
         remove("vendedores.txt");
         rename("temp.txt", "vendedores.txt");
         printf("Vendedor removido com sucesso!\n");
     } else {
+        
         remove("temp.txt");
-        printf("Vendedor nao encontrado!\n");
+        printf("Vendedor com ID %d nao foi encontrado!\n", idParaDeletar);
     }
-    
-    
+
     printf("\nPressione Enter para continuar...");
     getchar();
 }
