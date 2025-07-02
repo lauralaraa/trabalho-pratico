@@ -71,70 +71,75 @@ void cadastrarVendedor() {
 }
 
 void editarVendedor() {
-
-    int codigoBusca;
+    int idBusca;
     int encontrado = 0;
     Vendedor vendedor;
 
     system("cls||clear");
-    printf("\nEditar Vendedor\n");
-    printf("Digite o codigo do vendedor que deseja editar: ");
-    scanf("%d", &codigoBusca);
+    printf("\n--- Editar Vendedor ---\n");
+    printf("Digite o ID do vendedor que deseja editar: ");
+
+    
+    scanf("%d", &idBusca);
+    
     limparBuffer(); 
 
     FILE *arquivoOriginal = fopen("vendedores.txt", "r");
     FILE *arquivoTemp = fopen("vendedores_temp.txt", "w");
 
-    if(arquivoOriginal == NULL || arquivoTemp == NULL) {
-        system("cls||clear");
+    if (arquivoOriginal == NULL || arquivoTemp == NULL) {
         printf("Erro ao abrir os arquivos!\n");
-        printf("Pressione ENTER para continuar...\n");
-        getchar();
+        system("pause");
         return;
     }
 
-     while (fscanf(arquivoOriginal, "%99[^;];%d;%f;%f\n", vendedor.nome, &vendedor.id, &vendedor.salario, &vendedor.comissao) == 4) {
-
-        if(vendedor.id == codigoBusca) {
+   
+    while (fscanf(arquivoOriginal, "%99[^;];%d;%f;%f\n", vendedor.nome, &vendedor.id, &vendedor.salario, &vendedor.comissao) == 4) {
+        
+        
+        if (vendedor.id == idBusca) {
             encontrado = 1;
-            printf("\nVendedor encontrado (Codigo: %d)\n",vendedor.id);
-            printf("Nome atual: %s\n",vendedor.nome);
-            printf("--------------------------------------------------\n");
-            printf("Insira os novos dados:\n");
-
-            printf("Novo nome:\n");
-            fgets(vendedor.nome,100,stdin);
             system("cls||clear");
+            printf("\n--- Vendedor Encontrado --- \n");
+            printf("ID: %d\n", vendedor.id);
+            printf("Nome Atual: %s\n", vendedor.nome);
+            printf("--------------------------------------\n");
+            printf("Insira os novos dados:\n\n");
 
-            printf("Novo salario fixo:\n");
-            scanf("%f",&vendedor.salario);
+            printf("Novo nome: ");
+            
+            fgets(vendedor.nome, 100, stdin);
+            
+            vendedor.nome[strcspn(vendedor.nome, "\n")] = 0;
+
+            printf("Novo salario fixo: ");
+           
+            scanf("%f", &vendedor.salario);
+            
             limparBuffer();
 
-            printf("\nA comissao sera mantida/recalculada em outra area.\n");
-
-            fprintf(arquivoTemp, "%s;%d;%f;%f\n",vendedor.nome,vendedor.id, vendedor.salario,vendedor.comissao);
             printf("\n>> Vendedor atualizado com sucesso! <<\n");
+            system("pause"); 
+        }
 
-        }else {
-            fprintf(arquivoTemp, "%s;%d;%.2f;%.2f\n",vendedor.nome, vendedor.id,vendedor.salario,vendedor.comissao);
-}
+        
+        fprintf(arquivoTemp, "%s;%d;%.2f;%.2f\n", vendedor.nome, vendedor.id, vendedor.salario, vendedor.comissao);
+    }
 
-     }
+    fclose(arquivoOriginal);
+    fclose(arquivoTemp);
 
-     fclose(arquivoOriginal);
-     fclose(arquivoTemp);
-
-     if(encontrado) {
+    
+    if (encontrado) {
         remove("vendedores.txt");
         rename("vendedores_temp.txt", "vendedores.txt");
     } else {
+       
         remove("vendedores_temp.txt");
-        printf("\nERRO: Vendedor com o codigo '%d' nao foi encontrado.\n", codigoBusca);
+        system("cls||clear");
+        printf("\nERRO: Vendedor com o ID '%d' nao foi encontrado.\n", idBusca);
+        system("pause");
     }
-
-    system("cls||clear");
-    printf("\nPressione Enter para voltar ao menu...");
-    getchar(); 
 }
      
  
