@@ -230,7 +230,7 @@ void consultarProduto() {
         printf("\nProduto com o ID '%d' nao foi encontrado.\n\n", idBusca);
     }
 
-    sytem("pause");
+    system("pause");
 
 }
 
@@ -239,7 +239,7 @@ void menuProduto() {
     int flag=1;
     int select;
 
-    while(flag=1){
+    while(flag==1){
     system("cls||clear");
     printf("\nProdutos\n\n");
     printf("[1] Cadastrar\n");
