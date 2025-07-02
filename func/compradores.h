@@ -43,6 +43,7 @@ void cadastrarComprador () {
     comprador.cpf[strcspn(comprador.cpf, "\n")] = 0;
     system("cls||clear");
 
+    limparBuffer();
 
     printf("\nInsira o email do comprador: ");
     fgets(comprador.email,15,stdin);
@@ -111,6 +112,7 @@ void editarComprador() {
                 strcpy(comprador.nome, novoNome);
             }
 
+            limparBuffer();
 
             char novoEmail[50];
             printf("Novo email (Atual: %s): ", comprador.email);
@@ -120,7 +122,8 @@ void editarComprador() {
                 strcpy(comprador.email, novoEmail);
             }
 
-            
+
+
             comprador.endereco=editarEndereco();
             
             fprintf(arquivoTemporario, "%s;%s;%s;%s;%s;%s;%s\n",
@@ -160,6 +163,10 @@ void editarComprador() {
 void deletarComprador() {
     char cpf[15];
     int encontrado = 0;
+
+    limparBuffer();
+
+    system("cls||clear");
     
     printf("Digite o CPF do comprador que deseja remover: ");
     fgets(cpf, 15, stdin);

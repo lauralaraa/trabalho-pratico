@@ -20,7 +20,7 @@ Endereco cadastrarEndereco() {
     limparBuffer();
     system("cls||clear");
 
-    printf("\nInsira o nome da sua rua:");
+    printf("\nInsira o nome da sua rua: ");
     fgets(Endereco.rua,50,stdin);
     Endereco.rua[strcspn(Endereco.rua, "\n")] = 0;
     system("cls||clear");
