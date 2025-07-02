@@ -1,75 +1,90 @@
 #ifndef ENDERECO_H
 #define ENDERECO_H
 
-#include<stdio.h>
-#include<string.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "limparbuffer.h"
 
-#include"limparbuffer.h"
-
-typedef struct Endereco {
+typedef struct {
     char rua[50];
     char bairro[50];
     char cidade[50];
+    char estado[3]; 
     char cep[20];
-}Endereco;
+} Endereco;
+
 
 Endereco cadastrarEndereco() {
+    Endereco end;
+    
+    printf("--- Cadastro de Endereco ---\n");
+    printf("Rua: ");
+    fgets(end.rua, 50, stdin);
+    end.rua[strcspn(end.rua, "\n")] = 0;
 
-    Endereco Endereco;
+    printf("Bairro: ");
+    fgets(end.bairro, 50, stdin);
+    end.bairro[strcspn(end.bairro, "\n")] = 0;
+
+    printf("Cidade: ");
+    fgets(end.cidade, 50, stdin);
+    end.cidade[strcspn(end.cidade, "\n")] = 0;
+
+    printf("Estado (sigla, ex: SP): ");
+    fgets(end.estado, 3, stdin);
+    end.estado[strcspn(end.estado, "\n")] = 0;
     limparBuffer();
-    system("cls||clear");
 
-    printf("\nInsira o nome da sua rua: ");
-    fgets(Endereco.rua,50,stdin);
-    Endereco.rua[strcspn(Endereco.rua, "\n")] = 0;
-    system("cls||clear");
+    printf("CEP: ");
+    fgets(end.cep, 20, stdin);
+    end.cep[strcspn(end.cep, "\n")] = 0;
 
-    printf("\nInsira o nome do seu bairro: ");
-    fgets(Endereco.bairro,50,stdin);
-    Endereco.bairro[strcspn(Endereco.bairro, "\n")] = 0;
-    system("cls||clear");
+    return end;
+}
 
-    printf("\nInsira a cidade em que voce mora: ");
-    fgets(Endereco.cidade,50,stdin);
-    Endereco.cidade[strcspn(Endereco.cidade, "\n")] = 0;
-    system("cls||clear");
 
-    printf("\nInsira o CEP: ");
-    fgets(Endereco.cep,50,stdin);
-    Endereco.cep[strcspn(Endereco.cep, "\n")] = 0;
-    system("cls||clear");
+Endereco editarEndereco(Endereco enderecoAtual) {
+    char buffer[100];
+    printf("\n--- Editando Endereco ---\n");
 
-    return Endereco;
+    printf("Nova rua (Atual: %s): ", enderecoAtual.rua);
+    fgets(buffer, 100, stdin);
+    if (strlen(buffer) > 1) { 
+        buffer[strcspn(buffer, "\n")] = 0;
+        strcpy(enderecoAtual.rua, buffer);
     }
 
-    Endereco editarEndereco() {
-
-        Endereco Endereco;
-        system("cls||clear");
-        limparBuffer();
-
-        printf("Insira o novo nome da rua: ");
-        fgets(Endereco.rua,50,stdin);
-        system("cls||clear");
-        Endereco.rua[strcspn(Endereco.rua, "\n")] = 0;
-
-        printf("Insira o novo nome do bairro: ");
-        fgets(Endereco.bairro,50,stdin);
-        system("cls||clear");
-        Endereco.bairro[strcspn(Endereco.bairro, "\n")] = 0;
-
-        printf("Insira o novo nome da cidade: ");
-        fgets(Endereco.cidade,50,stdin);
-        system("cls||clear");
-        Endereco.cidade[strcspn(Endereco.cidade, "\n")] = 0;
-
-        printf("Insira o novo CEP: ");
-        fgets(Endereco.cep,50,stdin);
-        system("cls||clear");
-        Endereco.cep[strcspn(Endereco.cep, "\n")] = 0;
-
-        return Endereco;
+    printf("Novo bairro (Atual: %s): ", enderecoAtual.bairro);
+    fgets(buffer, 100, stdin);
+    if (strlen(buffer) > 1) {
+        buffer[strcspn(buffer, "\n")] = 0;
+        strcpy(enderecoAtual.bairro, buffer);
     }
+
+    printf("Nova cidade (Atual: %s): ", enderecoAtual.cidade);
+    fgets(buffer, 100, stdin);
+    if (strlen(buffer) > 1) {
+        buffer[strcspn(buffer, "\n")] = 0;
+        strcpy(enderecoAtual.cidade, buffer);
+    }
+    
+    printf("Novo estado (Atual: %s): ", enderecoAtual.estado);
+    fgets(buffer, 3, stdin);
+    if (strlen(buffer) > 1) {
+        buffer[strcspn(buffer, "\n")] = 0;
+        strcpy(enderecoAtual.estado, buffer);
+    }
+    limparBuffer();
+
+    printf("Novo CEP (Atual: %s): ", enderecoAtual.cep);
+    fgets(buffer, 20, stdin);
+    if (strlen(buffer) > 1) {
+        buffer[strcspn(buffer, "\n")] = 0;
+        strcpy(enderecoAtual.cep, buffer);
+    }
+
+    return enderecoAtual;
+}
 
 #endif

@@ -9,36 +9,39 @@
 #include "../func/endereco.h"
 #include "../func/notas.h"
 
-   int main()
-   {
-
+   int main() {
     int select;
-    int flag=1;
+    while (1) { 
+        system("cls||clear");
+        printf("\n--- SISTEMA DE E-COMMERCE ---\n\n");
+        printf("[1] Modulo de Produtos\n");
+        printf("[2] Modulo de Vendedores\n");
+        printf("[3] Modulo de Compradores\n");
+        printf("[4] Realizar Venda\n");
+        printf("[5] Emitir Nota Fiscal\n\n");
+        printf("[0] Sair do Programa\n\n");
+        printf("Escolha uma opcao: ");
 
-    while(flag==1){
-    system("cls||clear");
-    printf("\nMenu Principal\n\n");
-
-    printf("[1] Produtos\n");
-    printf("[2] Vendedores\n");
-    printf("[3] Compradores\n");
-    printf("[4] Vendas\n\n");
-    printf("[0] Sair\n\n:");
-    printf("Escolha uma opcao:\n");
-
-    scanf("%d",&select);
-
-    switch (select) {
-
-        case 0: flag=0; break;
-        case 1: menuProduto(); break;
-        case 2: menuVendedor(); break;
-        case 3: menuComprador(); break;
-        case 4: menuVenda(); break;
-        default: flag=0; break;
-
+        if (scanf("%d", &select) != 1) {
+            select = -1; 
+        }
+        
+        switch (select) {
+            case 0:
+                printf("\nSaindo do sistema... Ate mais!\n");
+                return 0; 
+            case 1: menuProduto(); break;
+            case 2: menuVendedor(); break;
+            case 3: menuComprador(); break;
+            case 4: cadastrarVenda(); break;
+            case 5: emitirNotaFiscal(); break;
+            default:
+                printf("\nOpcao invalida! Pressione Enter para tentar novamente.");
+                limparBuffer();
+                getchar();
+                break;
+        }
     }
-  }
+    return 0;
 }
-
 
