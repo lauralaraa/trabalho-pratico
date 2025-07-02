@@ -1,2 +1,2 @@
-1;produto;1;1.00
-2;bola;1;1.00
+1;chocolate;8;25.00
+2;leite;9;10.00
