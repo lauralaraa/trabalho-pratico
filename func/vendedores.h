@@ -21,14 +21,14 @@ int proximoIDvendedor() {
         return 1;
     }
     Vendedor v;
-    int id = 0;
-    while (fscanf(arquivo, "%49[^,];%d;%f;%f\n",&v.nome,&v.id,&v.salario,&v.comissao) == 4) {
-        if (v.id > id) {
-            id = v.id;
+    int idMaximo = 0;
+    while (fscanf(arquivo, "%99[^;];%d;%f;%f\n",&v.nome,&v.id,&v.salario,&v.comissao) == 4) {
+        if (v.id > idMaximo) {
+            idMaximo = v.id;
         }
     }
     fclose(arquivo);
-    return id+1;
+    return idMaximo+1;
 }
 
 void buscarVendedor() {
@@ -38,20 +38,21 @@ void buscarVendedor() {
 void cadastrarVendedor() {
 
     FILE *arquivo = fopen("vendedores.txt", "a");
-    if (arquivo==NULL) { 
+    if (arquivo == NULL) { 
         system("cls||clear");
         printf("Erro ao abrir o arquivo para escrita.\n");
         system("pause"); 
         return;
     }
 
-    int vendascom;
     Vendedor vendedor;
     limparBuffer();
     system("cls||clear");
 
+    printf("\n--- Cadastrar Vendedor ---\n");
     printf("\nInsira o nome do vendedor\n");
     fgets(vendedor.nome,100,stdin);
+    vendedor.nome[strcspn(vendedor.nome, "\n")] = 0;
     system("cls||clear");
 
     printf("\nInsira o salario fixo atual do vendedor\n");
@@ -59,10 +60,10 @@ void cadastrarVendedor() {
     limparBuffer();
     system("cls||clear");
 
-    vendedor.id=proximoIDvendedor();
-    vendedor.comissao=(vendascom/100)*3;
+    vendedor.id = proximoIDvendedor();
+    vendedor.comissao = 0.0;
 
-    fprintf(arquivo, "%s;%d;%f;%f\n", vendedor.nome, vendedor.id, vendedor.salario, vendedor.comissao);
+    fprintf(arquivo, "%s;%d;%.2f;%.2f\n", vendedor.nome, vendedor.id, vendedor.salario, vendedor.comissao);
     fclose(arquivo);
 
     printf("\nVendedor '%s' (ID: %d) cadastrado com sucesso!\n", vendedor.nome, vendedor.id);
@@ -84,7 +85,7 @@ void editarVendedor() {
     FILE *arquivoOriginal = fopen("vendedores.txt", "r");
     FILE *arquivoTemp = fopen("vendedores_temp.txt", "w");
 
-    if(arquivoOriginal = NULL || arquivoTemp == NULL) {
+    if(arquivoOriginal == NULL || arquivoTemp == NULL) {
         system("cls||clear");
         printf("Erro ao abrir os arquivos!\n");
         printf("Pressione ENTER para continuar...\n");
@@ -92,7 +93,7 @@ void editarVendedor() {
         return;
     }
 
-     while (fscanf(arquivoOriginal, "%[^;];%d;%f;%f\n", vendedor.nome, &vendedor.id, &vendedor.salario, &vendedor.comissao) == 4) {
+     while (fscanf(arquivoOriginal, "%99[^;];%d;%f;%f\n", vendedor.nome, &vendedor.id, &vendedor.salario, &vendedor.comissao) == 4) {
 
         if(vendedor.id == codigoBusca) {
             encontrado = 1;
@@ -115,7 +116,7 @@ void editarVendedor() {
             printf("\n>> Vendedor atualizado com sucesso! <<\n");
 
         }else {
-            fprintf(arquivoTemp, "%s;%d;%f;%f\n",vendedor.nome, vendedor.id,vendedor.salario,vendedor.comissao);
+            fprintf(arquivoTemp, "%s;%d;%.2f;%.2f\n",vendedor.nome, vendedor.id,vendedor.salario,vendedor.comissao);
 }
 
      }
@@ -189,33 +190,74 @@ void deletarVendedor() {
 
 void consultarVendedor() {
 
+    int idBusca;
+    int encontrado = 0;
+    Vendedor vendedor;
+
+    system("cls||clear");
+    printf("\n--- Consultar Vendedor ---\n");
+    printf("Digite o ID do vendedor que deseja consultar: ");
+    scanf("%d", &idBusca);
+    limparBuffer();
+
+    FILE *arquivo = fopen("vendedores.txt", "r");
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo! Nao ha vendedores cadastrados.\n");
+        system("pause");
+        return;
+    }
+
+    while (fscanf(arquivo, "%99[^;];%d;%f;%f\n", vendedor.nome, &vendedor.id, &vendedor.salario, &vendedor.comissao) == 4) {
+        if (vendedor.id == idBusca) {
+            encontrado = 1;
+            system("cls||clear");
+            printf("--- Vendedor Encontrado ---\n\n");
+            printf("ID: %d\n", vendedor.id);
+            printf("Nome: %s\n", vendedor.nome);
+            printf("Salario Fixo: R$ %.2f\n", vendedor.salario);
+            printf("Comissao Acumulada: R$ %.2f\n\n", vendedor.comissao);
+            break;
+        }
+    }
+
+    fclose(arquivo);
+
+    if(!encontrado) {
+        system("cls||clear");
+        printf("\nVendedor com o ID '%d' nao foi encontrado.\n\n", idBusca);
+    }
+    system("pause");
+
 }
 
 void menuVendedor() {
 
-    system("cls||clear");
-
-    int select;
-
-    printf("\nVendedores\n\n");
-
-    printf("[1] Cadastrar\n");
-    printf("[2] Consultar\n");
-    printf("[3] Editar\n");
-    printf("[4] Deletar\n\n");
-    printf("[0] Voltar\n\n: ");
+   int select;
     
-    scanf("%d",&select);
+    while(1) {
+        system("cls||clear");
+        printf("\n--- Menu Vendedores ---\n\n");
+        printf("[1] Cadastrar\n");
+        printf("[2] Consultar\n");
+        printf("[3] Editar\n");
+        printf("[4] Deletar\n\n");
+        printf("[0] Voltar ao Menu Principal\n\n");
+        printf("Escolha uma opcao: ");
+        
+        scanf("%d",&select);
 
-    switch(select) {
-
-        case 0: return; break;
-        case 1: cadastrarVendedor(); break;
-        case 2: consultarVendedor(); break;
-        case 3: editarVendedor(); break;
-        case 4: deletarVendedor(); break;
-        default: menuVendedor(); break;
-
+        switch(select) {
+            case 0: return; 
+            case 1: cadastrarVendedor(); break;
+            case 2: consultarVendedor(); break;
+            case 3: editarVendedor(); break;
+            case 4: deletarVendedor(); break;
+            default: 
+                printf("Opcao invalida! Pressione Enter para tentar novamente.");
+                limparBuffer();
+                getchar();
+                break;
+        }
     }
 
 }
