@@ -48,17 +48,14 @@ void emitirNotaFiscal() {
     }
 
     Comprador compradorEncontrado;
-    int compradorExiste = 0;
+
     FILE* f_compradores = fopen("compradores.txt", "r");
     if(f_compradores){
         while (fscanf(f_compradores, "%99[^;];%14[^;];%49[^;];%49[^;];%49[^;];%49[^;];%2[^;];%19[^\n]\n",
                   compradorEncontrado.nome, compradorEncontrado.cpf, compradorEncontrado.email, compradorEncontrado.endereco.rua, 
                   compradorEncontrado.endereco.bairro, compradorEncontrado.endereco.cidade, 
                   compradorEncontrado.endereco.estado, compradorEncontrado.endereco.cep) == 8){
-            if(strcmp(compradorEncontrado.cpf, vendaEncontrada.cpfComprador) == 0){
-                compradorExiste = 1;
-                break;
-            }
+        
         }
         fclose(f_compradores);
     }
@@ -87,8 +84,13 @@ void emitirNotaFiscal() {
     printf("                     NOTA FISCAL\n");
     printf("=========================================================\n");
     printf("Venda No: %d\n\n", vendaEncontrada.id);
+
+    fprintf(f_notas,"=========================================================\n");
+    fprintf(f_notas,"                     NOTA FISCAL\n");
+    fprintf(f_notas,"=========================================================\n");
+    fprintf(f_notas,"Venda No: %d\n\n", vendaEncontrada.id);
     
-    if(compradorExiste){
+    
         printf("CLIENTE:\n");
         printf("  Nome: %s\n  CPF: %s\n", compradorEncontrado.nome, compradorEncontrado.cpf);
         printf("  Endereco: %s, %s, %s - %s, CEP: %s\n",
@@ -102,7 +104,6 @@ void emitirNotaFiscal() {
                compradorEncontrado.endereco.rua, compradorEncontrado.endereco.bairro,
                compradorEncontrado.endereco.cidade, compradorEncontrado.endereco.estado,
                compradorEncontrado.endereco.cep);
-    }
     
     printf("---------------------------------------------------------\n");
     printf("PRODUTOS\n");
