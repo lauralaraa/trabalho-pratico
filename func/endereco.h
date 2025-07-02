@@ -20,22 +20,22 @@ Endereco cadastrarEndereco() {
     limparBuffer();
     system("cls||clear");
 
-    printf("\nInsira o nome da sua rua:\n");
+    printf("\nInsira o nome da sua rua: ");
     fgets(Endereco.rua,50,stdin);
     Endereco.rua[strcspn(Endereco.rua, "\n")] = 0;
     system("cls||clear");
 
-    printf("\nInsira o nome do seu bairro:\n");
+    printf("\nInsira o nome do seu bairro: ");
     fgets(Endereco.bairro,50,stdin);
     Endereco.bairro[strcspn(Endereco.bairro, "\n")] = 0;
     system("cls||clear");
 
-    printf("\nInsira a cidade em que voce mora:\n");
+    printf("\nInsira a cidade em que voce mora: ");
     fgets(Endereco.cidade,50,stdin);
     Endereco.cidade[strcspn(Endereco.cidade, "\n")] = 0;
     system("cls||clear");
 
-    printf("\nInsira o CEP\n");
+    printf("\nInsira o CEP: ");
     fgets(Endereco.cep,50,stdin);
     Endereco.cep[strcspn(Endereco.cep, "\n")] = 0;
     system("cls||clear");
