@@ -22,6 +22,12 @@ void emitirNotaFiscal() {
     printf("Digite o ID da venda: ");
     scanf("%d", &idVendaBusca);
 
+    FILE* f_notas = fopen("notas.txt", "w");
+    if(!f_notas) {
+        printf("Erro ao abrir o arquivo de notas.\n");
+        return;
+    }
+
     FILE* f_vendas = fopen("vendas.txt", "r");
     if(!f_vendas) { return; }
 
@@ -89,6 +95,13 @@ void emitirNotaFiscal() {
                compradorEncontrado.endereco.rua, compradorEncontrado.endereco.bairro,
                compradorEncontrado.endereco.cidade, compradorEncontrado.endereco.estado,
                compradorEncontrado.endereco.cep);
+
+        fprintf(f_notas,"CLIENTE:\n");
+        fprintf(f_notas,"  Nome: %s\n  CPF: %s\n", compradorEncontrado.nome, compradorEncontrado.cpf);
+        fprintf(f_notas,"  Endereco: %s, %s, %s - %s, CEP: %s\n",
+               compradorEncontrado.endereco.rua, compradorEncontrado.endereco.bairro,
+               compradorEncontrado.endereco.cidade, compradorEncontrado.endereco.estado,
+               compradorEncontrado.endereco.cep);
     }
     
     printf("---------------------------------------------------------\n");
@@ -107,7 +120,27 @@ void emitirNotaFiscal() {
     printf("%42s R$ %-13.2f\n", "VALOR TOTAL:", vendaEncontrada.valorTotal + frete);
     printf("=========================================================\n\n");
     
+    fprintf(f_notas,"---------------------------------------------------------\n");
+    fprintf(f_notas,"PRODUTOS\n");
+    fprintf(f_notas,"---------------------------------------------------------\n");
+    fprintf(f_notas,"%-10s %-5s %-15s %-15s\n", "ID PROD.", "QTD.", "PRECO UNIT.", "PRECO TOTAL");
+    for(int i=0; i<numItens; i++){
+        fprintf(f_notas,"%-10d %-5d R$ %-13.2f R$ %-13.2f\n",
+               itens[i].idProduto, itens[i].quantidade, itens[i].precoUnitario,
+               itens[i].quantidade * itens[i].precoUnitario);
+    }
+    fprintf(f_notas,"---------------------------------------------------------\n");
+    fprintf(f_notas,"%42s R$ %-13.2f\n", "SUBTOTAL:", vendaEncontrada.valorTotal);
+    fprintf(f_notas,"%42s R$ %-13.2f\n", "FRETE:", frete);
+    fprintf(f_notas,"=========================================================\n");
+    fprintf(f_notas,"%42s R$ %-13.2f\n", "VALOR TOTAL:", vendaEncontrada.valorTotal + frete);
+    fprintf(f_notas,"=========================================================\n\n");
+
+
+    fclose(f_notas);
+    printf("Nota fiscal emitida com sucesso!\n");
     system("pause");
+
 }
 
 #endif
