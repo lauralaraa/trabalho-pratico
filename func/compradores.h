@@ -126,7 +126,7 @@ void editarComprador() {
 void consultarComprador() {
     char cpfBusca[15];
     int encontrado = 0;
-    Comprador c;
+    Comprador comprador;
 
     system("cls||clear");
     printf("Digite o CPF do comprador que deseja consultar: ");
@@ -142,15 +142,15 @@ void consultarComprador() {
     }
     
     while (fscanf(arquivo, "%99[^;];%14[^;];%49[^;];%49[^;];%49[^;];%49[^;];%2[^;];%19[^\n]\n",
-                  c.nome, c.cpf, c.email, c.endereco.rua, c.endereco.bairro, c.endereco.cidade, c.endereco.estado, c.endereco.cep) == 8) {
-        if(strcmp(c.cpf, cpfBusca) == 0){
+                  comprador.nome, comprador.cpf, comprador.email, comprador.endereco.rua, comprador.endereco.bairro, comprador.endereco.cidade, comprador.endereco.estado, comprador.endereco.cep) == 8) {
+        if(strcmp(comprador.cpf, cpfBusca) == 0){
             encontrado = 1;
             system("cls||clear");
             printf("--- Dados do Comprador ---\n");
-            printf("Nome: %s\n", c.nome);
-            printf("CPF: %s\n", c.cpf);
-            printf("E-mail: %s\n", c.email);
-            printf("Endereco: %s, %s, %s - %s, CEP: %s\n\n", c.endereco.rua, c.endereco.bairro, c.endereco.cidade, c.endereco.estado, c.endereco.cep);
+            printf("Nome: %s\n", comprador.nome);
+            printf("CPF: %s\n", comprador.cpf);
+            printf("E-mail: %s\n", comprador.email);
+            printf("Endereco: %s, %s, %s - %s, CEP: %s\n\n", comprador.endereco.rua, comprador.endereco.bairro, comprador.endereco.cidade, comprador.endereco.estado, comprador.endereco.cep);
             break;
         }
     }
@@ -165,7 +165,7 @@ void consultarComprador() {
 void deletarComprador() {
     char cpfBusca[15];
     int encontrado = 0;
-    Comprador c;
+    
 
     system("cls||clear");
     printf("Digite o CPF do comprador a ser deletado: ");
