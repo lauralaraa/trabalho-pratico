@@ -242,6 +242,39 @@ void consultarProduto() {
 
 }
 
+void listarProduto (){
+
+    Produto produto;
+
+    system("cls||clear");
+
+    printf("\n--- Lista de Produtos ---\n");
+
+    FILE *arquivo = fopen("produtos.txt", "r");
+
+    if(arquivo == NULL) {
+        system("cls||clear");
+        printf("Erro ao abrir o arquivo! Nao ha produtos cadastrados.\n");
+        system("pause");
+        return;
+    }
+
+    while (fscanf(arquivo, "%d;%99[^;];%d;%f\n", &produto.id, produto.nome, &produto.estoque, &produto.preco) == 4) {
+
+            printf("--------------------------------------------------\n");
+            printf("ID: %d\n", produto.id);
+            printf("Nome: %s\n", produto.nome);
+            printf("Quantidade em Estoque: %d\n", produto.estoque);
+            printf("Preco: R$ %.2f\n\n", produto.preco);
+    
+        }
+
+    printf("--------------------------------------------------\n\n");
+    fclose(arquivo);
+    system("pause");
+
+}
+
 void menuProduto() {
 
     int flag=1;
@@ -249,13 +282,15 @@ void menuProduto() {
 
     while(flag==1){
     system("cls||clear");
-    printf("\nProdutos\n\n");
+    printf("\n--- Modulo Produtos ---\n\n");
     printf("[1] Cadastrar\n");
     printf("[2] Consultar\n");
     printf("[3] Editar\n");
-    printf("[4] Deletar\n\n");
-    printf("[0] Voltar\n\n: ");
-
+    printf("[4] Deletar\n");
+    printf("[5] Listar\n\n");
+    printf("[0] Voltar ao Menu Principal\n\n\n");
+    printf("Escolha uma opcao: ");
+        
     scanf("%d", &select);
 
     switch (select) {
@@ -264,6 +299,7 @@ void menuProduto() {
         case 2: consultarProduto(); break;
         case 3: editarProduto(); break;
         case 4: deletarProduto(); break;
+        case 5: listarProduto(); break; 
         default: flag=1; break;
     }
 }

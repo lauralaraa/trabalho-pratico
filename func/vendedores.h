@@ -31,10 +31,6 @@ int proximoIDvendedor() {
     return idMaximo+1;
 }
 
-void buscarVendedor() {
-
-}
-
 void cadastrarVendedor() {
 
     FILE *arquivo = fopen("vendedores.txt", "a");
@@ -250,6 +246,38 @@ void consultarVendedor() {
 
 }
 
+void listarVendedor (){
+
+    Vendedor vendedor;
+    
+    system("cls||clear");
+
+    printf("\n--- Lista de Vendedores ---\n");
+
+    FILE *arquivo = fopen("vendedores.txt", "r");
+
+    if(arquivo == NULL) {
+        system("cls||clear");
+        printf("Erro ao abrir o arquivo! Nao ha produtos cadastrados.\n");
+        system("pause");
+        return;
+    }
+
+    while (fscanf(arquivo, "%d;%99[^;];%f;%f\n", &vendedor.id, vendedor.nome, &vendedor.salario, &vendedor.comissao) == 4) {
+
+            printf("--------------------------------------------------\n");
+            printf("ID: %d\n", vendedor.id);
+            printf("Nome: %s\n", vendedor.nome);
+            printf("Salario Fixo: R$ %.2f\n", vendedor.salario);
+            printf("Comissao Acumulada: R$ %.2f\n\n", vendedor.comissao);
+        }
+
+    printf("--------------------------------------------------\n\n");
+    fclose(arquivo);
+    system("pause");
+
+}
+
 void menuVendedor() {
 
    int flag=1;
@@ -258,12 +286,13 @@ void menuVendedor() {
     while(flag==1) {
 
         system("cls||clear");
-        printf("\n--- Menu Vendedores ---\n\n");
+        printf("\n--- Modulo Vendedores ---\n\n");
         printf("[1] Cadastrar\n");
         printf("[2] Consultar\n");
         printf("[3] Editar\n");
-        printf("[4] Deletar\n\n");
-        printf("[0] Voltar ao Menu Principal\n\n");
+        printf("[4] Deletar\n");
+        printf("[5] Listar\n\n");
+        printf("[0] Voltar ao Menu Principal\n\n\n");
         printf("Escolha uma opcao: ");
         
         scanf("%d",&select);
@@ -275,6 +304,7 @@ void menuVendedor() {
             case 2: consultarVendedor(); break;
             case 3: editarVendedor(); break;
             case 4: deletarVendedor(); break;
+            case 5: listarVendedor(); break;
             default: flag=1; break;
         }
     }

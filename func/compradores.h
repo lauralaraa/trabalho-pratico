@@ -208,6 +208,39 @@ void deletarComprador() {
     system("pause");
 }
 
+    void listarComprador (){
+
+    Comprador comprador;
+
+    system("cls||clear");
+
+    printf("\n--- Lista de Compradores ---\n");
+
+    FILE *arquivo = fopen("compradores.txt", "r");
+
+    if(arquivo == NULL) {
+        system("cls||clear");
+        printf("Erro ao abrir o arquivo! Nao ha compradores cadastrados.\n");
+        system("pause");
+        return;
+    }
+
+     while (fscanf(arquivo, "%99[^;];%14[^;];%49[^;];%49[^;];%49[^;];%49[^;];%2[^;];%19[^\n]\n",comprador.nome, comprador.cpf, comprador.email, comprador.endereco.rua, comprador.endereco.bairro, comprador.endereco.cidade, comprador.endereco.estado, comprador.endereco.cep) == 8) {
+
+            printf("--------------------------------------------------\n");
+             printf("Nome: %s\n", comprador.nome);
+            printf("CPF: %s\n", comprador.cpf);
+            printf("E-mail: %s\n", comprador.email);
+            printf("Endereco: %s, %s, %s - %s, CEP: %s\n\n", comprador.endereco.rua, comprador.endereco.bairro, comprador.endereco.cidade, comprador.endereco.estado, comprador.endereco.cep);
+    
+        }
+
+    printf("--------------------------------------------------\n\n");
+    fclose(arquivo);
+    system("pause");
+
+}
+
 void menuComprador() {
     int select;
     while(1){
@@ -216,8 +249,9 @@ void menuComprador() {
         printf("[1] Cadastrar\n");
         printf("[2] Consultar\n");
         printf("[3] Editar\n");
-        printf("[4] Deletar\n\n");
-        printf("[0] Voltar\n\n");
+        printf("[4] Deletar\n");
+        printf("[5] Listar\n\n");
+        printf("[0] Voltar ao Menu Principal\n\n\n");
         printf("Escolha uma opcao: ");
         
         scanf("%d",&select);
@@ -227,6 +261,7 @@ void menuComprador() {
             case 2: consultarComprador(); break;
             case 3: editarComprador(); break;
             case 4: deletarComprador(); break;
+            case 5: listarComprador(); break;
             default: break;
         }
     }
