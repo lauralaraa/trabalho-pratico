@@ -63,10 +63,10 @@ void atualizarComissaoVendedor(int idVendedor, float valorVenda) {
     if (!f_orig || !f_temp) return;
 
     Vendedor v;
-    float comissao = valorVenda * 0.03;
+    float comissaoCalculada = valorVenda * 0.03;
     while (fscanf(f_orig, "%d;%99[^;];%f;%f\n", &v.id, v.nome, &v.salario, &v.comissao) == 4) {
         if (v.id == idVendedor) {
-            v.comissao += comissao; 
+            v.comissao += comissaoCalculada; 
         }
         fprintf(f_temp, "%d;%s;%.2f;%.2f\n", v.id, v.nome, v.salario, v.comissao);
     }
